@@ -47,36 +47,10 @@
 #	mk/misc/toplevel.mk
 #
 
-SUBDIR+=	architecture
 SUBDIR+=	archivers
-SUBDIR+=	audio
-SUBDIR+=	devel
-SUBDIR+=	doc
-SUBDIR+=	editors
-SUBDIR+=	graphics
 SUBDIR+=	hardware
-SUBDIR+=	image
-SUBDIR+=	interfaces
-SUBDIR+=	knowledge
-SUBDIR+=	lang
-SUBDIR+=	localization
-SUBDIR+=	manipulation
-SUBDIR+=	mapping
-SUBDIR+=	math
-SUBDIR+=	meta-pkgs
-SUBDIR+=	middleware
-SUBDIR+=	motion
 SUBDIR+=	net
-SUBDIR+=	optimization
-SUBDIR+=	path
 SUBDIR+=	pkgtools
-SUBDIR+=	robots
-SUBDIR+=	scripts
-SUBDIR+=	shell
-SUBDIR+=	simulation
-SUBDIR+=	speech
-SUBDIR+=	supervision
-SUBDIR+=	sysutils
-SUBDIR+=	www
+
 
 include mk/robotpkg.subdir.mk

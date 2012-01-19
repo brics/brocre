@@ -23,6 +23,6 @@ NO_EXTRACT=		yes
 do-install:
 	${RUN} tar -C $(ROBOTPKG_BASE) -xvf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}
 
-
+include ../../hardware/brics-external-hardware-driver/depend.mk
 include ../../mk/robotpkg.mk
 
