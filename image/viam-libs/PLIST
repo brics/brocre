@@ -1,8 +1,0 @@
-@comment Tue Nov 24 17:54:26 CET 2009
-include/viam/viam_acq_driver.h
-include/viam/viamcv.h
-include/viam/viamlib.h
-include/viam/viamtypes.h
-lib/libviam.la
-lib/pkgconfig/viam-libs.pc
-lib/viam-drivers/file.la

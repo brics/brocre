@@ -1,7 +1,0 @@
-This package is intended to ease the construction of CORBA servers in the C++
-hpp-* packages by factoring actions that are common to all servers.
-
-This package contains only one C++ template class hpp::corba::Server. The
-parameter of this class is the implementation of an idl interface.
-
-For more information and html documentation in included in the package.

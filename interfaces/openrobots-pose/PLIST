@@ -1,4 +1,0 @@
-include/openrobots/jointstate.h
-include/openrobots/pose.h
-include/openrobots/jointmap.h
-lib/pkgconfig/openrobots-pose.pc

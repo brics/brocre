@@ -1,9 +1,0 @@
-@comment Thu Jun 23 17:11:32 CEST 2011
-include/jrl/walkgen/config.hh
-include/jrl/walkgen/deprecated.hh
-include/jrl/walkgen/patterngeneratorinterface.hh
-include/jrl/walkgen/pgtypes.hh
-include/jrl/walkgen/warning.hh
-lib/libjrl-walkgen.so
-lib/libjrl-walkgen.so.${PKGVERSION}
-lib/pkgconfig/jrl-walkgen.pc
