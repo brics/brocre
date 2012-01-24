@@ -10,8 +10,8 @@ MASTER_SITES=		https://github.com/youbot/youbot_driver/wiki/
 MASTER_REPOSITORY= 	git git://github.com/youbot/youbot_driver.git
 
 MAINTAINER=		jan.paulus@h-brs.de
-HOMEPAGE=		www.youbot-store.com
-COMMENT=		The youBot Driver
+HOMEPAGE=		http://github.com/youbot/youbot_driver
+COMMENT=		Drivers for the KUKA youBot robot
 LICENSE=		gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE=		yes

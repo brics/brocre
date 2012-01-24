@@ -47,10 +47,11 @@
 #	mk/misc/toplevel.mk
 #
 
-SUBDIR+=	archivers
+SUBDIR+=	algorithm
+#SUBDIR+=	archivers
 SUBDIR+=	hardware
-SUBDIR+=	net
-SUBDIR+=	pkgtools
-
+#SUBDIR+=	net
+#SUBDIR+=	pkgtools
+SUBDIR+=	youbot
 
 include mk/robotpkg.subdir.mk

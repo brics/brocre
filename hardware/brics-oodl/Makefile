@@ -9,8 +9,8 @@ MASTER_SITES=		http://brics.inf.h-brs.de/
 MASTER_REPOSITORY= 	git git://github.com/janpaulus/BRICS_OODL.git
 
 MAINTAINER=		jan.paulus@h-brs.de
-HOMEPAGE=		www.youbot-store.com
-COMMENT=		BRICS OODL
+HOMEPAGE=		http://www.best-of-robotics.org
+COMMENT=		BRICS Object-Oriented Device Layer
 LICENSE=		gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE=		yes

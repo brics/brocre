@@ -10,7 +10,7 @@ MASTER_REPOSITORY= 	svn https://svn.best-of-robotics.org/brics/BROCRE/BRICS_3D/t
 
 MAINTAINER=		Sebastian Blumenthal
 HOMEPAGE=		https://trac.best-of-robotics.org/brics/wiki/BRICS_3D/Mainpage
-CO3dENT=		BRICS_3D is the BRICS library for 3D perception and modeling
+COMMENT=		BRICS_3D is the BRICS library for 3D perception and modeling
 LICENSE=		gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE=		yes

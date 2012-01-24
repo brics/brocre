@@ -26,8 +26,6 @@
 	<tr>
 	  <td>Source version:
 	  <td>%%PKG%%
-	  <td>browse the package's
-	    <a href="http://trac.laas.fr/git/robotpkg/log/%%PORT%%?showmsg=1">history</a>.
 	</tr>
 	<tr>
 	  <td>Home page:
@@ -41,14 +39,6 @@
       </p></div>
 
 
-For a summary on how to use the package collection, go to the
-<a href="../../index.html">top of the packages tree</a>.
-</p>
-
-<p>Problem reports, updates or suggestions for this package should be
-reported with
-<a
-href="https://softs.laas.fr/bugzilla/buglist.cgi?bug_status=__open__&product=robotpkg">the robotpkg bugzilla.</a></p>
 
 
 <p>
@@ -60,20 +50,7 @@ This package requires the following package(s) to run:
 %%RUN_DEPENDS%%
 </p>
 
-<p>
-Select one of the links below to download the
-package in precompiled binary form for installation with pkg_add(1).
-Available machine architectures and package versions:
-<TABLE>
-%%BIN_PKGS%%
-</TABLE>
 
-      <p>
-	The Robotics packages collection is designed to permit
-	easy <a href="../../README.html">installation from source</a> -
-	particularly useful if the latest binary package is
-	not available for your chosen platform.
-      </p>
 
       <div id="footer">
       </div>

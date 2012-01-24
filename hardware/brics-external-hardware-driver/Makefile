@@ -11,7 +11,7 @@ MASTER_REPOSITORY= 	git git://github.com/janpaulus/brics-external-packages-ros.g
  
 MAINTAINER=		jan.paulus@h-brs.de
 HOMEPAGE=		https://github.com/janpaulus/brics-external-packages-ros
-COMMENT=		brics external hardware driver
+COMMENT=		third party software for BRICS hardware driver
 LICENSE=		gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE=		yes

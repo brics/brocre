@@ -9,8 +9,8 @@ MASTER_SITES=		http://brics.inf.h-brs.de/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git
 
 MAINTAINER=		Robert Wilterdink
-HOMEPAGE=		https://github.com/b-it-bots/youbot-stack
-COMMENT=		YouBot-stack development repository
+HOMEPAGE=		http://github.com/b-it-bots/youbot-stack
+COMMENT=		youBot contol stack of the University of Twente
 LICENSE=		gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE=		yes
