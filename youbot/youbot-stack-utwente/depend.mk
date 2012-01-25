@@ -13,7 +13,7 @@ PREFER.youbot-stack-utwente?=	robotpkg
 
 DEPEND_USE+=		youbot-stack-utwente
 
-DEPEND_ABI.youbot-stack-utwente?=	youbot-stack-utwente>=0.9
+DEPEND_ABI.youbot-stack-utwente?=	youbot-stack-utwente>=0.1
 DEPEND_DIR.youbot-stack-utwente?=	../../youbot/youbot-stack-utwente
 
 SYSTEM_SEARCH.youbot-stack-utwente=\

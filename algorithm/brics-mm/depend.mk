@@ -13,7 +13,7 @@ PREFER.brics-mm?=	robotpkg
 
 DEPEND_USE+=		brics-mm
 
-DEPEND_ABI.brics-mm?=	brics-mm>=0.9
+DEPEND_ABI.brics-mm?=	brics-mm>=0.1
 DEPEND_DIR.brics-mm?=	../../algorithm/brics-mm
 
 SYSTEM_SEARCH.brics-mm=\

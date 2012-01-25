@@ -50,6 +50,7 @@
 SUBDIR+=	algorithm
 #SUBDIR+=	archivers
 SUBDIR+=	hardware
+SUBDIR+=	interfaces
 #SUBDIR+=	net
 #SUBDIR+=	pkgtools
 SUBDIR+=	youbot

@@ -1,16 +1,16 @@
-# robotpkg Makefile for:	youbot/youbot-stack-utwente
+# robotpkg Makefile for:	youbot/youbot-applications
 #
 
-YOUBOT_STACK_UTWENTE_VERSION=	0.1
-DISTNAME=		youbot-stack-utwente-${YOUBOT_STACK_UTWENTE_VERSION}
-PKGNAME=		youbot-stack-utwente-${YOUBOT_STACK_UTWENTE_VERSION}
-CATEGORIES=		hardware
+YOUBOT_APPLICATIONS_VERSION=	0.1
+DISTNAME=		youbot-applications-${YOUBOT_APPLICATIONS_VERSION}
+PKGNAME=		youbot-applications-${YOUBOT_APPLICATIONS_VERSION}
+CATEGORIES=		youbot
 MASTER_SITES=		http://brics.inf.h-brs.de/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git
 
-MAINTAINER=		Robert Wilterdink
-HOMEPAGE=		http://github.com/b-it-bots/youbot-stack
-COMMENT=		youBot contol stack of the University of Twente
+MAINTAINER=		Walter Nowak 
+HOMEPAGE=		http://youbot-store.com
+COMMENT=		Applications for the KUKA youBot
 LICENSE=		gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE=		yes

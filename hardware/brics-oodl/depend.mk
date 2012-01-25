@@ -13,7 +13,7 @@ PREFER.brics-oodl?=	robotpkg
 
 DEPEND_USE+=		brics-oodl
 
-DEPEND_ABI.brics-oodl?=	brics-oodl>=0.9
+DEPEND_ABI.brics-oodl?=	brics-oodl>=0.1
 DEPEND_DIR.brics-oodl?=	../../hardware/brics-oodl
 
 SYSTEM_SEARCH.brics-oodl=\
