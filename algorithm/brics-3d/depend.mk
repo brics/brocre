@@ -1,23 +1,20 @@
-# robotpkg depend.mk for:	brics-3d
-#
-
-DEPEND_DEPTH:=		${DEPEND_DEPTH}+
-BRICS_3d_DEPEND_MK:= ${BRICS_3d_DEPEND_MK}+
+DEPEND_DEPTH:=        ${DEPEND_DEPTH}+
+brics_3d_DEPEND_MK:= ${brics_3d_DEPEND_MK}+
 
 ifeq (+,$(DEPEND_DEPTH))
-DEPEND_PKG+=		brics-3d
+DEPEND_PKG+=        brics_3d
 endif
 
-ifeq (+,$(BRICS_3d_DEPEND_MK))
-PREFER.brics-3d?=	robotpkg
+ifeq (+,$(brics_3d_DEPEND_MK))
+PREFER.brics_3d?=    robotpkg
 
-DEPEND_USE+=		brics-3d
+DEPEND_USE+=        brics_3d
 
-DEPEND_ABI.brics-3d?=	brics-3d>=0.1
-DEPEND_DIR.brics-3d?=	../../algorithm/brics-3d
+DEPEND_ABI.brics_3d?=    brics_3d>=0.1
+DEPEND_DIR.brics_3d?=    ../../algorithm/brics_3d
 
-SYSTEM_SEARCH.brics-3d=\
-	BRICS_3d/CMakeLists.txt
+SYSTEM_SEARCH.brics_3d=\ 
+    brics_3d/manifest.xml
 endif
 
-DEPEND_DEPTH:=		${DEPEND_DEPTH:+=}
+DEPEND_DEPTH:=        ${DEPEND_DEPTH:+=}
