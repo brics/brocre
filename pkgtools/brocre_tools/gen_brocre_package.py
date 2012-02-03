@@ -5,15 +5,26 @@ import os
 import sys
 
 def parseManifest(packageName, fileToCheckIfInstall, categorie, masterSite, version):
-	ros_root = rospkg.get_ros_root()
 
-	r = rospkg.RosPack()
-	depends = r.get_depends('roscpp')
-	path = r.get_path('rospy')
+	
+	
+	try:
+		package = rospkg.RosStack()
+		package.get_manifest(packageName)
+	#	version = package.get_manifest(packageName).version
+	except:
+		try:
+			package = rospkg.RosPack()
+			package.get_manifest(packageName)
+		except:
+			print "it is not a ros stack or package"
+			exit(0)
+	
 
-	package = rospkg.RosPack()
 
-	folderName = packageName
+	folderName = package.get_path(packageName)
+	#packagePath = package.get_path(packageName)
+#	print package.get_path
 	tarFileName = packageName +"-"+ version+ ".tar.gz"
 
 	print "create Makefile file"
@@ -66,7 +77,7 @@ def parseManifest(packageName, fileToCheckIfInstall, categorie, masterSite, vers
 	commands.getoutput("find "+ folderName+"/* -type f -not -iwholename '*.svn*' > PLIST")
 
 	print "create tarball"
-	commands.getoutput("tar -czf "+tarFileName+" --exclude=\".svn\" "+ folderName)
+	commands.getoutput("tar -czf "+tarFileName+" --exclude=\".svn\" -C"+ folderName+"/.. " + packageName)
 
 	print "compute checksums"
 	distinfo = open('distinfo', 'w')
@@ -88,6 +99,7 @@ def parseManifest(packageName, fileToCheckIfInstall, categorie, masterSite, vers
 
 
 if __name__ == "__main__":
+	parseManifest("cob_driver", "file", "categorie", "masterSite", "1")
 	if len(sys.argv) < 6:
 		print "Please specify the parameters:\n"
 		print "python gen_brocre_package.py <packageName> <fileToCheckIfInstall>, <categorie>, <masterSite>, <version>"
