@@ -2,13 +2,13 @@
 #
 
 BRICS_MM_VERSION=	0.1
-DISTNAME=		brics-mm-${BRICS_MM_VERSION}
+DISTNAME=		brics_mm-${BRICS_MM_VERSION}
 PKGNAME=		brics-mm-${BRICS_MM_VERSION}
-CATEGORIES=		hardware
-MASTER_SITES=		https://github.com/youbot/youbot_driver/wiki/
+CATEGORIES=		algorithm
+MASTER_SITES=		http://brics.inf.h-brs.de/
 MASTER_REPOSITORY= 	svn https://svn.best-of-robotics.org/brics/BROCRE/BRICS_MM/trunk
 
-MAINTAINER=		Sebastian Blumenthal
+MAINTAINER=		Walter Nowak
 HOMEPAGE=		https://trac.best-of-robotics.org/brics/wiki/BRICS_MM/Mainpage
 COMMENT=		BRICS_MM is the BRICS library for mobile manipulation
 LICENSE=		gnu-lgpl-v2.1 modified-bsd
@@ -16,7 +16,7 @@ LICENSE=		gnu-lgpl-v2.1 modified-bsd
 NO_CONFIGURE=		yes
 NO_BUILD=		yes
 NO_EXTRACT=		yes
-#NO_INSTALL= 		no
+
 
 
 do-install:
