@@ -4,20 +4,23 @@ import string
 import os
 import sys
 
-def parseManifest(packageName, fileToCheckIfInstall, categorie, masterSite, version):
+def parseManifest(packageName, categorie, masterSite, version):
 
 	try:
 		package = rospkg.RosStack()
 		package.get_manifest(packageName)
+		fileToCheckIfInstall = packageName + "/stack.xml"
 	#	version = package.get_manifest(packageName).version
 	except:
 		try:
 			package = rospkg.RosPack()
 			package.get_manifest(packageName)
+			fileToCheckIfInstall = packageName + "/manifest.xml"
 		except:
 			print "it is not a ros stack or package"
 			exit(0)
 	
+
 	folderName = package.get_path(packageName)
 	tarFileName = packageName +"-"+ version+ ".tar.gz"
 
@@ -36,7 +39,7 @@ def parseManifest(packageName, fileToCheckIfInstall, categorie, masterSite, vers
 	makefile.write("COMMENT = " + package.get_manifest(packageName).brief +"\n")
 	makefile.write("LICENSE = " + package.get_manifest(packageName).license +"\n\n")
 	makefile.write("NO_CONFIGURE = yes\nNO_BUILD = yes\nNO_EXTRACT = yes\n\n")
-	makefile.write("do-install:\n\t${RUN} tar -C $(ROBOTPKG_BASE) -xvf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}\n\n")
+	makefile.write("do-install:\n\t${RUN} tar -C $(ROBOTPKG_BASE)/$(CATEGORIES) -xvf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}\n\n")
 	makefile.write("include ../../mk/robotpkg.mk")
 	makefile.close()
 
@@ -96,8 +99,8 @@ def parseManifest(packageName, fileToCheckIfInstall, categorie, masterSite, vers
 if __name__ == "__main__":
 	if len(sys.argv) < 6:
 		print "Please specify the parameters:\n"
-		print "python gen_brocre_package.py <packageName> <fileToCheckIfInstall>, <categorie>, <masterSite>, <version>"
+		print "python gen_brocre_package.py <packageName> <categorie> <masterSite> <version>"
 	else:
-		parseManifest(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5])
+		parseManifest(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
 
 
