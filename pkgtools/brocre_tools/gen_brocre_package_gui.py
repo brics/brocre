@@ -18,6 +18,7 @@ global entryWidgetCategorie
 global entryWidgetVersion
 global entryWidgetMasterSite
 global checkbuttonValues
+global listbox
 
 def extractPackagesFromRobotPKGMakefile(Makefile):
 	COMMENT_IN_MAKEFILE = "#"
@@ -73,9 +74,14 @@ def displayText():
 		error = error + "\nInsert Package Version"  
 	if entryWidgetMasterSite.get().strip() == "":
 		error = error + "\nInsert Package Master Site"  
-
-	for value in checkbuttonValues:
-		error = error + "\n" + value.get()
+		
+		
+	error = error + "\nSelected Dependencies: " 
+	#if listbox.curselection() > 0:
+	for value in listbox.curselection():
+		error = error + "\n " + listbox.get(value)
+	
+	
 		
 	if not error == "":
 		tkMessageBox.showerror(message=error)
@@ -98,6 +104,21 @@ def openFile():
 	dlg = tkFileDialog.Open(root, filetypes = ftypes)
 	fl = dlg.show()
 	entryWidgetManifest.insert(0, fl)
+	
+
+def selectCategorieEvent():
+	listbox.delete(0,END)
+	selectedpackages = []
+	for package in categoriesPerPackage.keys():
+		for selectedCategories in checkbuttonValues:
+			if categoriesPerPackage[package].count(selectedCategories.get()) > 0:
+				selectedpackages.append(package)
+				
+	selectedpackages = list(set(selectedpackages))
+	selectedpackages.sort(cmp=None, key=None, reverse=False)
+	
+	for package in selectedpackages:
+		listbox.insert(END, package)
 
 		
 if __name__ == "__main__":
@@ -140,6 +161,7 @@ if __name__ == "__main__":
 	 	for subsublist in sublist:
 	 		allCategories.append(subsublist)
 	allCategories = list(set(allCategories))
+	allCategories.sort(cmp=None, key=None, reverse=False)
 	
 	checkbuttonRow = 0
 	checkbuttonValues = list()
@@ -147,13 +169,18 @@ if __name__ == "__main__":
 	var = StringVar()
 	for categorie in allCategories:
 		checkbuttonValues.append(StringVar())
-		cb = Checkbutton(root, text=categorie, variable=checkbuttonValues[checkbuttonRow], onvalue=categorie, offvalue="")
+		cb = Checkbutton(root, text=categorie, variable=checkbuttonValues[checkbuttonRow], onvalue=categorie, offvalue="", command=selectCategorieEvent)
 		cb.grid(row=checkbuttonRow + 5, column=0, sticky=W)
 		cb.deselect()
 		checkbuttonRow = checkbuttonRow + 1
 		
-	listbox = Listbox(root)
-	listbox.grid(sticky=W+E+N+S)
+	listbox = Listbox(root, selectmode=MULTIPLE)
+	listbox.grid( sticky=W)
+
+	
+
+
+
 	
 	# Buttons
 	#buttonOpenFile = Button(root, text="...", command=openFile, height =1)
