@@ -11,7 +11,7 @@ import commands
 import rospkg
 
 #Pakage Generation Script
-import brocre_package_generator
+import brocre_package_tools
 
 global entryWidgetPackageName
 global entryWidgetCategorie
@@ -91,7 +91,7 @@ def displayText():
 			+ "\n Package Version: " + entryWidgetVersion.get().strip()
 			+ "\n Package MasterSite: " + entryWidgetMasterSite.get().strip())
 		
-		brocre_package_generator.parseManifest(entryWidgetPackageName.get().strip(),
+		brocre_package_tools.parseManifest(entryWidgetPackageName.get().strip(),
 			entryWidgetCategorie.get().strip(),
 			entryWidgetMasterSite.get().strip(),
 			entryWidgetVersion.get().strip(),

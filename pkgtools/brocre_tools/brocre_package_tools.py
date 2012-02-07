@@ -26,7 +26,7 @@ def parseManifest(packageName, categorie, masterSite, version, dependencies):
 
 	print "create Makefile file"
 	makefile = open('Makefile', 'w')
-	versionstring = packageName + "_version"
+	versionstring = "PACKAGE_VERSION"
 	makefile.write(versionstring +" = "+ version+"\n")
 	makefile.write("DISTNAME = "+ packageName+"-${"+versionstring+"}\n")
 	makefile.write("PKGNAME = "+ packageName+"-${"+versionstring+"}\n")
