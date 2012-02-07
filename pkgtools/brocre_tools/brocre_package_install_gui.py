@@ -59,8 +59,15 @@ def parsePKGMakefile(filename,currentpackage):
 			currentpackage.homepage = line[line.find("=")+1:].strip()
 		if not COMMENT_IN_MAKEFILE in line and "LICENSE" in line and currentpackage.license == "":
 			currentpackage.license = line[line.find("=")+1:].strip()
+			
+def parseRobotpkgInfo(inputtext,currentpackage):
+	text = inputtext.split("\n")
+	for line in text:
+		if currentpackage.name in line:
+			newline = line.split(" ")
+			currentpackage.installedVersion = newline[0][len(currentpackage.name)+1:]
+			print line
 
-				
 
 def extractPackageDescriptions():
 	# Parse Makefile which contains Package Description folders
@@ -74,6 +81,9 @@ def extractPackageDescriptions():
 		
 	packageslocal = list()
 	
+	robotpkgInfoText = commands.getoutput("robotpkg_info")
+	print robotpkgInfoText
+	
 	for folder in packageDescriptionsList.keys():
 		for package in packageDescriptionsList[folder]:
 			currentpackage = packageDescription()
@@ -83,7 +93,9 @@ def extractPackageDescriptions():
 			DESCRfile.close()
 			currentpackage.name = package
 			currentpackage.folder = folder
+			parseRobotpkgInfo(robotpkgInfoText,currentpackage)
 			packageslocal.append(currentpackage)
+	
 	
 	return packageslocal		
 	
@@ -94,16 +106,19 @@ def displayText():
 	error = ""
 	toInstalledPackage = []
 	
-	for value in listbox.curselection():
-		toInstalledPackage.append(listbox.get(value))
-		
-	if len(toInstalledPackage) == 0:
+	if len(listbox.curselection()) == 0:
 		error = "No package is selected!"
+	else:		
+		currentPackage = packageDescription()
+		for package in allPackages:
+			if package.name ==listbox.get(listbox.curselection()):
+				currentPackage = package
 	
 	if not error == "":
 		tkMessageBox.showerror(message=error)
 	else:
-		tkMessageBox.showinfo("Result", "Package " + toInstalledPackage[0] + " will be installed!" )
+		tkMessageBox.showinfo("Result", "Package " + currentPackage.name + " will be installed!" )
+		print commands.getoutput("make -C " + ROBOT_PACKAGE_PATH + currentPackage.folder +"/" +  currentPackage.name  + " update")
 		
 
 '''
@@ -118,18 +133,24 @@ def openFile():
 
 def selectCategorieEvent():
 	listbox.delete(0,END)
-	selectedpackages = []
+	selectedpackages = dict()
+
 	for package in allPackages:
 		for selectedCategories in checkbuttonValues:
 			if package.categories.count(selectedCategories.get()) > 0:
-				selectedpackages.append(package.name)
+				if package.installedVersion == "":
+					selectedpackages[package.name] = 0
+				else:
+					selectedpackages[package.name] = 1
 				
-	selectedpackages = list(set(selectedpackages))
-	selectedpackages.sort(cmp=None, key=None, reverse=False)
+				
+	#selectedpackages = list(set(selectedpackages))
+	#selectedpackages.sort(cmp=None, key=None, reverse=False)
 	
-	for package in selectedpackages:
-		listbox.insert(END, package)
-	listbox.itemconfig(0, background="green")
+	for packageName in selectedpackages.keys():
+		listbox.insert(END, packageName)
+		if selectedpackages[packageName] == 1:
+			listbox.itemconfig(END, background="green")
 		
 def updateCurrentPackageDescription(event):
 	if not len(listbox.curselection()) == 0:
