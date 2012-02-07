@@ -4,7 +4,7 @@ import string
 import os
 import sys
 
-def parseManifest(packageName, categorie, masterSite, version):
+def parseManifest(packageName, categorie, masterSite, version, dependencies):
 
 	try:
 		package = rospkg.RosStack()
@@ -40,6 +40,10 @@ def parseManifest(packageName, categorie, masterSite, version):
 	makefile.write("LICENSE = " + package.get_manifest(packageName).license +"\n\n")
 	makefile.write("NO_CONFIGURE = yes\nNO_BUILD = yes\nNO_EXTRACT = yes\n\n")
 	makefile.write("do-install:\n\t${RUN} tar -C $(ROBOTPKG_BASE)/$(CATEGORIES) -xvf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}\n\n")
+	
+	for depend in dependencies:
+		makefile.write("include ../../" + depend + "/depend.mk\n")
+		
 	makefile.write("include ../../mk/robotpkg.mk")
 	makefile.close()
 

@@ -11,7 +11,7 @@ import commands
 import rospkg
 
 #Pakage Generation Script
-import gen_brocre_package
+import brocre_package_generator
 
 global entryWidgetPackageName
 global entryWidgetCategorie
@@ -76,10 +76,10 @@ def displayText():
 		error = error + "\nInsert Package Master Site"  
 		
 		
-	error = error + "\nSelected Dependencies: " 
-	#if listbox.curselection() > 0:
+
+	dependencies = []
 	for value in listbox.curselection():
-		error = error + "\n " + listbox.get(value)
+		dependencies.append(listbox.get(value))
 	
 	
 		
@@ -91,10 +91,11 @@ def displayText():
 			+ "\n Package Version: " + entryWidgetVersion.get().strip()
 			+ "\n Package MasterSite: " + entryWidgetMasterSite.get().strip())
 		
-		gen_brocre_package.parseManifest(entryWidgetPackageName.get().strip(),
+		brocre_package_generator.parseManifest(entryWidgetPackageName.get().strip(),
 			entryWidgetCategorie.get().strip(),
 			entryWidgetMasterSite.get().strip(),
-			entryWidgetVersion.get().strip())
+			entryWidgetVersion.get().strip(),
+			dependencies)
 
 '''
 Open File dialog

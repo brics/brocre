@@ -5,7 +5,7 @@
 YOUBOT_DRIVER_VERSION=	0.91
 DISTNAME=		youbot-driver-${YOUBOT_DRIVER_VERSION}
 PKGNAME=		youbot-driver-${YOUBOT_DRIVER_VERSION}
-CATEGORIES=		hardware
+CATEGORIES=		hardware youbot
 MASTER_SITES=		https://github.com/youbot/youbot_driver/wiki/
 MASTER_REPOSITORY= 	git git://github.com/youbot/youbot_driver.git
 
