@@ -1,9 +1,9 @@
 # robotpkg Makefile for:	algorithm/brics-mm
 #
 
-BRICS_MM_VERSION=	0.1
-DISTNAME=		brics_mm-${BRICS_MM_VERSION}
-PKGNAME=		brics-mm-${BRICS_MM_VERSION}
+PACKAGE_VERSION=	0.1
+DISTNAME     =		brics_mm-${PACKAGE_VERSION}
+PKGNAME=		brics-mm-${PACKAGE_VERSION}
 CATEGORIES=		algorithm
 MASTER_SITES=		http://brics.inf.h-brs.de/
 MASTER_REPOSITORY= 	svn https://svn.best-of-robotics.org/brics/BROCRE/BRICS_MM/trunk

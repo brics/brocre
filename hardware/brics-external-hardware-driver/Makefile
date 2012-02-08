@@ -1,10 +1,9 @@
 # robotpkg Makefile for:	hardware/brics-external-hartware-driver
 # Created:			Jan Paulus on 17 Aug 2010
 #
-
-EXTERNAL_DRIVERS_VERSION=	0.1
-DISTNAME=		brics-external-hardware-driver-${EXTERNAL_DRIVERS_VERSION}
-PKGNAME=		brics-external-hardware-driver-${EXTERNAL_DRIVERS_VERSION}
+PACKAGE_VERSION = 0.1
+DISTNAME=		brics-external-hardware-driver-${PACKAGE_VERSION}
+PKGNAME=		brics-external-hardware-driver-${PACKAGE_VERSION}
 CATEGORIES=		hardware
 MASTER_SITES=	http://brics.inf.h-brs.de/
 MASTER_REPOSITORY= 	git git://github.com/janpaulus/brics-external-packages-ros.git

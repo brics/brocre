@@ -1,9 +1,9 @@
 # robotpkg Makefile for:	youbot/youbot-stack-locomotec
 #
 
-YOUBOT_STACK_LOCOMOTEC_VERSION=	0.1
-DISTNAME=		youbot-stack-locomotec-${YOUBOT_STACK_LOCOMOTEC_VERSION}
-PKGNAME=		youbot-stack-locomotec-${YOUBOT_STACK_LOCOMOTEC_VERSION}
+PACKAGE_VERSION=	0.1
+DISTNAME=		youbot-stack-locomotec-${PACKAGE_VERSION}
+PKGNAME=		youbot-stack-locomotec-${PACKAGE_VERSION}
 CATEGORIES=		youbot
 MASTER_SITES=		http://brics.inf.h-brs.de/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git

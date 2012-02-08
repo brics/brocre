@@ -1,9 +1,9 @@
 # robotpkg Makefile for:	youbot/youbot-applications
 #
 
-YOUBOT_APPLICATIONS_VERSION=	0.1
-DISTNAME=		youbot-applications-${YOUBOT_APPLICATIONS_VERSION}
-PKGNAME=		youbot-applications-${YOUBOT_APPLICATIONS_VERSION}
+PACKAGE_VERSION=	0.1
+DISTNAME=		youbot-applications-${PACKAGE_VERSION}
+PKGNAME=		youbot-applications-${PACKAGE_VERSION}
 CATEGORIES=		youbot
 MASTER_SITES=		http://brics.inf.h-brs.de/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git

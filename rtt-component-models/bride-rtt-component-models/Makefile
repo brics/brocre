@@ -1,9 +1,9 @@
 # robotpkg Makefile for:	youbot/youbot-applications
 #
 
-BRIDE_RTT_COMPONENT_MODELS_VERSION=	0.1
-DISTNAME=		bride-rtt-component-models-${BRIDE_RTT_COMPONENT_MODELS_VERSION}
-PKGNAME=		bride-rtt-component-models-${BRIDE_RTT_COMPONENT_MODELS_VERSION}
+PACKAGE_VERSION=	0.1
+DISTNAME=		bride-rtt-component-models-${PACKAGE_VERSION}
+PKGNAME=		bride-rtt-component-models-${PACKAGE_VERSION}
 CATEGORIES=		rtt-component-models
 MASTER_SITES=		http://brics.inf.h-brs.de/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git

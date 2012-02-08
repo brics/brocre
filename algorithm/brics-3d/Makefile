@@ -1,6 +1,6 @@
-brics_3d_version = 0.1
-DISTNAME = brics_3d-${brics_3d_version}
-PKGNAME = brics_3d-${brics_3d_version}
+PACKAGE_VERSION = 0.1
+DISTNAME = brics-3d-${PACKAGE_VERSION}
+PKGNAME = brics-3d-${PACKAGE_VERSION}
 CATEGORIES = algorithm
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 

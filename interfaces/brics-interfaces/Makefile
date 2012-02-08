@@ -1,9 +1,9 @@
 # robotpkg Makefile for:	youbot/brics-interfaces
 #
 
-BRICS_INTERFACES_VERSION=	0.1
-DISTNAME=		brics-interfaces-${BRICS_INTERFACES_VERSION}
-PKGNAME=		brics-interfaces-${BRICS_INTERFACES_VERSION}
+PACKAGE_VERSION=	0.1
+DISTNAME=		brics-interfaces-${PACKAGE_VERSION}
+PKGNAME=		brics-interfaces-${PACKAGE_VERSION}
 CATEGORIES=		interfaces
 MASTER_SITES=		http://brics.inf.h-brs.de/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git

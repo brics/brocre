@@ -2,9 +2,9 @@
 # Created:			Jan Paulus on 17 Aug 2010
 #
 
-YOUBOT_DRIVER_VERSION=	0.91
-DISTNAME=		youbot-driver-${YOUBOT_DRIVER_VERSION}
-PKGNAME=		youbot-driver-${YOUBOT_DRIVER_VERSION}
+PACKAGE_VERSION=	0.91
+DISTNAME=		youbot-driver-${PACKAGE_VERSION}
+PKGNAME=		youbot-driver-${PACKAGE_VERSION}
 CATEGORIES=		hardware youbot
 MASTER_SITES=		https://github.com/youbot/youbot_driver/wiki/
 MASTER_REPOSITORY= 	git git://github.com/youbot/youbot_driver.git

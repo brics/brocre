@@ -1,9 +1,9 @@
 # robotpkg Makefile for:	hardware/brics-oodl
 #
 
-BRICS_OODL_VERSION=	0.1
-DISTNAME=		brics-oodl-${BRICS_OODL_VERSION}
-PKGNAME=		brics-oodl-${BRICS_OODL_VERSION}
+PACKAGE_VERSION=	0.1
+DISTNAME=		brics-oodl-${PACKAGE_VERSION}
+PKGNAME=		brics-oodl-${PACKAGE_VERSION}
 CATEGORIES=		hardware
 MASTER_SITES=		http://brics.inf.h-brs.de/
 MASTER_REPOSITORY= 	git git://github.com/janpaulus/BRICS_OODL.git

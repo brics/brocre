@@ -1,9 +1,9 @@
 # robotpkg Makefile for:	youbot/youbot-stack-utwente
 #
 
-YOUBOT_STACK_UTWENTE_VERSION=	0.1
-DISTNAME=		youbot-stack-utwente-${YOUBOT_STACK_UTWENTE_VERSION}
-PKGNAME=		youbot-stack-utwente-${YOUBOT_STACK_UTWENTE_VERSION}
+PACKAGE_VERSION=	0.1
+DISTNAME=		youbot-stack-utwente-${PACKAGE_VERSION}
+PKGNAME=		youbot-stack-utwente-${PACKAGE_VERSION}
 CATEGORIES=		hardware
 MASTER_SITES=		http://brics.inf.h-brs.de/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git
