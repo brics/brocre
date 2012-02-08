@@ -12,7 +12,7 @@ import rospkg
 import operator
 
 #Pakage Generation Script
-import brocre_package_tools
+from brocre_package_tools import *
 
 global checkbuttonValues
 global listbox
@@ -22,85 +22,18 @@ global consoleOutput
 global buttonInstall
 global buttonUninstall
 
+
 allPackages = []
+MAKEFILE_NAME = "Makefile"
+ROBOT_PACKAGE_PATH = "../../"
 
-class packageDescription:
-    def __init__(self):
-        self.name = ""
-        self.folder = ""
-        self.version = ""
-        self.categories = []
-        self.installedVersion = ""
-        self.maintainer = ""
-        self.homepage = ""
-        self.license = ""
-        self.description = ""
+def updateAllPackageDescriptions():
+    global allPackages
+    allPackages = extractPackageDescriptions()
+    selectCategorieEvent()
+    event =""
+    updateCurrentPackageDescription(event)
 
-def extractPackagesFromRobotPKGMakefile(Makefile):
-    COMMENT_IN_MAKEFILE = "#"
-    SUBDIR_STRING = "SUBDIR+="
-    
-    packageDescriptionFolder = []
-    #Check every line if it contains SUBDIR+= and is not commented out via '#'
-    for line in  Makefile:
-        if not COMMENT_IN_MAKEFILE in line and SUBDIR_STRING in line:        
-            # parse line
-            packageDescriptionFolder.append(line[len(SUBDIR_STRING):].strip())
-    Makefile.close()
-    return packageDescriptionFolder
-
-
-def parsePKGMakefile(filename,currentpackage):
-    COMMENT_IN_MAKEFILE = "#"
-    filehandle = file(filename)
-    for line in filehandle:
-        if not COMMENT_IN_MAKEFILE in line and "CATEGORIES" in line:
-            categories = line[line.find("=")+1:].strip()
-            currentpackage.categories = categories.split(" ")
-        if not COMMENT_IN_MAKEFILE in line and "PACKAGE_VERSION" in line and currentpackage.version == "":
-            currentpackage.version = line[line.find("=")+1:].strip()
-        if not COMMENT_IN_MAKEFILE in line and "MAINTAINER" in line and currentpackage.maintainer == "":
-            currentpackage.maintainer = line[line.find("=")+1:].strip()
-        if not COMMENT_IN_MAKEFILE in line and "HOMEPAGE" in line and currentpackage.homepage == "":
-            currentpackage.homepage = line[line.find("=")+1:].strip()
-        if not COMMENT_IN_MAKEFILE in line and "LICENSE" in line and currentpackage.license == "":
-            currentpackage.license = line[line.find("=")+1:].strip()
-            
-def parseRobotpkgInfo(inputtext,currentpackage):
-    text = inputtext.split("\n")
-    for line in text:
-        if currentpackage.name in line:
-            newline = line.split(" ")
-            currentpackage.installedVersion = newline[0][len(currentpackage.name)+1:]
-
-
-def extractPackageDescriptions():
-    # Parse Makefile which contains Package Description folders
-    packageDescriptionFolders = extractPackagesFromRobotPKGMakefile(file(packageFoldersDescriptionFile))
-
-    packageDescriptionsList = dict()
-    
-    #load hashmap key=Robotpkg Category/Folder, value = packageList
-    for folder in packageDescriptionFolders:
-        packageDescriptionsList[folder] = extractPackagesFromRobotPKGMakefile(file(ROBOT_PACKAGE_PATH + folder +"/"+ MAKEFILE_NAME))
-        
-    del allPackages[:]
-
-    robotpkgInfoText = commands.getoutput("robotpkg_info")
-    
-    for folder in packageDescriptionsList.keys():
-        for package in packageDescriptionsList[folder]:
-            currentpackage = packageDescription()
-            parsePKGMakefile(ROBOT_PACKAGE_PATH + folder +"/" +  package + "/Makefile", currentpackage)
-            DESCRfile = file(ROBOT_PACKAGE_PATH + folder +"/" +  package +"/DESCR")
-            currentpackage.description = DESCRfile.read()
-            DESCRfile.close()
-            currentpackage.name = package
-            currentpackage.folder = folder
-            parseRobotpkgInfo(robotpkgInfoText,currentpackage)
-            allPackages.append(currentpackage)
-     
-    
 
 def installbutton():
     #Show Error if values are not entered
@@ -123,10 +56,7 @@ def installbutton():
             consoleOutput.insert(END, commands.getoutput("make -C " + ROBOT_PACKAGE_PATH + currentPackage.folder +"/" +  currentPackage.name  + " update"))
             consoleOutput.yview_moveto(1)
             consoleOutput.config(state=DISABLED)
-            extractPackageDescriptions()
-            selectCategorieEvent()
-            event =""
-            updateCurrentPackageDescription(event)
+            updateAllPackageDescriptions()
         
         
 def uninstallbutton():
@@ -150,10 +80,7 @@ def uninstallbutton():
             consoleOutput.insert(END, commands.getoutput("robotpkg_delete " +  currentPackage.name))
             consoleOutput.yview_moveto(1)
             consoleOutput.config(state=DISABLED)
-            extractPackageDescriptions()
-            selectCategorieEvent()
-            event =""
-            updateCurrentPackageDescription(event)
+            updateAllPackageDescriptions()
         
 def compilebutton():
     #Show Error if values are not entered
@@ -190,17 +117,6 @@ def updateBROCREbutton():
         os.execl(python, python, * sys.argv)
 
   
-
-'''
-Open File dialog
-'''
-def openFile():
-    ftypes = [('Manifest files', '*.xml'), ('All files', '*')]
-    dlg = tkFileDialog.Open(root, filetypes = ftypes)
-    fl = dlg.show()
-    entryWidgetManifest.insert(0, fl)
-
-
 def selectCategorieEvent():
     listbox.delete(0,END)
     selectedpackages = []
@@ -257,25 +173,13 @@ def updateCurrentPackageDescription(event):
 
         
 if __name__ == "__main__":
-    
-    ''' Find all RobotPKG  package descriptions '''
-    # Makefile Parser Definitions
-    ROBOT_PACKAGE_PATH = "../../"
-    MAKEFILE_NAME = "Makefile"
-
-    #Definition for Softwaretype Radiobuttons
-    PACKAGE = "Package"
-    STACK = "Stack"
-    
-    packageFoldersDescriptionFile = ROBOT_PACKAGE_PATH + MAKEFILE_NAME
                     
     ''' Window Creation '''
     root = Tk()
     root.title("BROCRE Package Installer")
           
     
-
-    extractPackageDescriptions()
+    allPackages = extractPackageDescriptions()
         
     allCategories = list()
     for package in allPackages:

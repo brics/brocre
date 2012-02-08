@@ -11,14 +11,18 @@ import commands
 import rospkg
 
 #Pakage Generation Script
-import brocre_package_tools
+from brocre_package_tools import *
 
+global allPackages
 global entryWidgetPackageName
 global entryWidgetCategorie
 global entryWidgetVersion
 global entryWidgetMasterSite
 global checkbuttonValues
 global listbox
+
+
+allPackages = []
 
 def extractPackagesFromRobotPKGMakefile(Makefile):
 	COMMENT_IN_MAKEFILE = "#"
@@ -32,28 +36,9 @@ def extractPackagesFromRobotPKGMakefile(Makefile):
 			packageDescriptionFolder.append(line[len(SUBDIR_STRING):].strip())
 	return packageDescriptionFolder
 
-def extractCategoryPerPackage():
-	# Parse Makefile which contains Package Description folders
-	packageDescriptionFolders = extractPackagesFromRobotPKGMakefile(file(packageFoldersDescriptionFile))
-	packageDescriptionsList = dict()
-	
-	#load hashmap key=Robotpkg Category/Folder, value = packageList
-	for folder in packageDescriptionFolders:
-		packageDescriptionsList[folder] = extractPackagesFromRobotPKGMakefile(file(ROBOT_PACKAGE_PATH + folder +"/"+ MAKEFILE_NAME))
-		
-	categoriesPerPackage = dict()
-	
-	for folder in packageDescriptionsList.keys():
-		for package in packageDescriptionsList[folder]:
-			categories = commands.getoutput("make -s -C " + ROBOT_PACKAGE_PATH + folder +"/" +  package  + " show-var VARNAME=CATEGORIES")
-			categoriesAsList = categories.split(" ")
-			categoriesPerPackage[package] = categoriesAsList 
-	
-	return categoriesPerPackage		
-			
-	#result = commands.getoutput("make -s -C " + ROBOT_PACKAGE_PATH + " show-var VARNAME=CATEGORIES | grep -v '===>'")
-	##return list(set(result.split("\n")))
-	#result = list(set(result))	
+
+
+
 	
 
 def displayText():
@@ -74,14 +59,17 @@ def displayText():
 		error = error + "\nInsert Package Version"  
 	if entryWidgetMasterSite.get().strip() == "":
 		error = error + "\nInsert Package Master Site"  
+	if labelBrocreFolder.get().strip() == "":
+		error = error + "\nInsert BROCRE Folder"  
 		
 		
 
 	dependencies = []
 	for value in listbox.curselection():
-		dependencies.append(listbox.get(value))
-	
-	
+		for package in allPackages:
+			if listbox.get(value) == package.name:
+				dependencies.append(package.folder + "/"+package.name)
+		
 		
 	if not error == "":
 		tkMessageBox.showerror(message=error)
@@ -89,31 +77,25 @@ def displayText():
 		tkMessageBox.showinfo("Result", "Package Name: " + entryWidgetPackageName.get().strip() 
 			+ "\n Package Categorie: " + entryWidgetCategorie.get().strip() 
 			+ "\n Package Version: " + entryWidgetVersion.get().strip()
-			+ "\n Package MasterSite: " + entryWidgetMasterSite.get().strip())
+			+ "\n Package MasterSite: " + entryWidgetMasterSite.get().strip()
+			+ "\n BROCRE Folder: " + labelBrocreFolder.get().strip()
+			+ "\n Dependencies: " + dependencies.__str__())
 		
-		brocre_package_tools.parseManifest(entryWidgetPackageName.get().strip(),
+		generateBrocreFiles(entryWidgetPackageName.get().strip(),
 			entryWidgetCategorie.get().strip(),
 			entryWidgetMasterSite.get().strip(),
 			entryWidgetVersion.get().strip(),
-			dependencies)
-
-'''
-Open File dialog
-'''
-def openFile():
-	ftypes = [('Manifest files', '*.xml'), ('All files', '*')]
-	dlg = tkFileDialog.Open(root, filetypes = ftypes)
-	fl = dlg.show()
-	entryWidgetManifest.insert(0, fl)
+			dependencies,
+			labelBrocreFolder.get().strip())
 	
 
 def selectCategorieEvent():
 	listbox.delete(0,END)
 	selectedpackages = []
-	for package in categoriesPerPackage.keys():
+	for package in allPackages:
 		for selectedCategories in checkbuttonValues:
-			if categoriesPerPackage[package].count(selectedCategories.get()) > 0:
-				selectedpackages.append(package)
+			if package.categories.count(selectedCategories.get()) > 0:
+				selectedpackages.append(package.name)
 				
 	selectedpackages = list(set(selectedpackages))
 	selectedpackages.sort(cmp=None, key=None, reverse=False)
@@ -124,26 +106,16 @@ def selectCategorieEvent():
 		
 if __name__ == "__main__":
 	
-	''' Find all RobotPKG  package descriptions '''
-	# Makefile Parser Definitions
-	ROBOT_PACKAGE_PATH = "../../"
-	MAKEFILE_NAME = "Makefile"
-
-	#Definition for Softwaretype Radiobuttons
-	PACKAGE = "Package"
-	STACK = "Stack"
-	
-	packageFoldersDescriptionFile = ROBOT_PACKAGE_PATH + MAKEFILE_NAME
-					
 	''' Window Creation '''
 	root = Tk()
 	root.title("BROCRE Package Generator")
 	  	
 	# Text Lables
 	labelPackageName = Label(root, text="Package Name:").grid(row=1, sticky=W)
-	labelCategorie = Label(root, text="Category:").grid(row=2, sticky=W)
+	labelCategorie = Label(root, text="Category: (separate by spaces)").grid(row=2, sticky=W)
 	labelVersion = Label(root, text="Version:").grid(row=3, sticky=W) 
 	labelMasterSite = Label(root, text="Master Site:").grid(row=4, sticky=W	) 
+	labelBrocreFolder = Label(root, text="BROCRE Folder:").grid(row=5, sticky=W	) 
 
 	# Input fileds
 	entryWidgetPackageName = Entry(root, width=25)
@@ -154,13 +126,23 @@ if __name__ == "__main__":
 	entryWidgetVersion.grid(row=3, column=1, sticky=W)
 	entryWidgetMasterSite = Entry(root, width=25)
 	entryWidgetMasterSite.grid(row=4, column=1, sticky=W)
+	labelBrocreFolder = Entry(root, width=25)
+	labelBrocreFolder.grid(row=5, column=1, sticky=W)
 	
-	categoriesPerPackage = extractCategoryPerPackage()
-		
+	entryWidgetPackageName.insert(0, "youbot_driver")
+	entryWidgetCategorie.insert(0, "hardware youbot")
+	entryWidgetVersion.insert(0, "0.9")
+	entryWidgetMasterSite.insert(0, "http://brics.inf.h-brs.de/")
+	labelBrocreFolder.insert(0, "hardware")
+	
+	
+	allPackages = extractPackageDescriptions()
+	
 	allCategories = list()
-	for sublist in categoriesPerPackage.values():
-	 	for subsublist in sublist:
-	 		allCategories.append(subsublist)
+	for package in allPackages:
+		for category in package.categories:
+			allCategories.append(category)
+	    
 	allCategories = list(set(allCategories))
 	allCategories.sort(cmp=None, key=None, reverse=False)
 	
@@ -171,7 +153,7 @@ if __name__ == "__main__":
 	for categorie in allCategories:
 		checkbuttonValues.append(StringVar())
 		cb = Checkbutton(root, text=categorie, variable=checkbuttonValues[checkbuttonRow], onvalue=categorie, offvalue="", command=selectCategorieEvent)
-		cb.grid(row=checkbuttonRow + 5, column=0, sticky=W)
+		cb.grid(row=checkbuttonRow + 6, column=0, sticky=W)
 		cb.deselect()
 		checkbuttonRow = checkbuttonRow + 1
 		
