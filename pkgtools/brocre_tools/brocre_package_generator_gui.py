@@ -24,45 +24,35 @@ global listbox
 
 allPackages = []
 
-def extractPackagesFromRobotPKGMakefile(Makefile):
-	COMMENT_IN_MAKEFILE = "#"
-	SUBDIR_STRING = "SUBDIR+="
-	
-	packageDescriptionFolder = []
-	#Check every line if it contains SUBDIR+= and is not commented out via '#'
-	for line in  Makefile:
-		if not COMMENT_IN_MAKEFILE in line and SUBDIR_STRING in line:		
-			# parse line
-			packageDescriptionFolder.append(line[len(SUBDIR_STRING):].strip())
-	return packageDescriptionFolder
-
-
-
-
-	
 
 def displayText():
-	""" Display the Entry text value. """
-	rosStackCommnad = rospkg.RosStack()
-	availableStacks = rosStackCommnad.list()
-	rosPackageCommand = rospkg.RosPack()
-	availablePackages=rosPackageCommand.list()
-	
+	""" Display the Entry text value. """	
 	#Show Error if values are not entered
 	error = ""
-	if not entryWidgetPackageName.get().strip() in availableStacks and not entryWidgetPackageName.get().strip() in availablePackages:
-		error = error + entryWidgetPackageName.get().strip() + " is not a valid ROS stack or package"  
-		
+	if entryWidgetPackageName.get().strip() == "":
+		error = error + "\nInsert Package Name" 
 	if entryWidgetCategorie.get().strip() == "":
-		error = error + "\nInsert Package Categorie"  
+		error = error + "\nInsert Category"  
 	if entryWidgetVersion.get().strip() == "":
-		error = error + "\nInsert Package Version"  
+		error = error + "\nInsert Version"  
+	if entryWidgetMaintainer.get().strip() == "":
+		error = error + "\nInsert Maintainer" 
+	if entryWidgetHomepage.get().strip() == "":
+		error = error + "\nInsert Homepage" 
+	if entryWidgetLicense.get().strip() == "":
+		error = error + "\nInsert License" 
+	if entryWidgetBrief.get().strip() == "":
+		error = error + "\nInsert Brief description" 
+	if entryWidgetDescription.get(1.0, END).strip() == "":
+		error = error + "\nInsert Description" 
 	if entryWidgetMasterSite.get().strip() == "":
 		error = error + "\nInsert Package Master Site"  
-	if labelBrocreFolder.get().strip() == "":
-		error = error + "\nInsert BROCRE Folder"  
-		
-		
+	if entryWidgetBrocreFolder.get().strip() == "":
+		error = error + "\nInsert BROCRE Folder"
+	if entryWidgetFileToCheckIfInstall.get().strip() == "":
+		error = error + "\nInsert File to check if install" 
+	if entryWidgetSourcePath.get().strip() == "":
+		error = error + "\nInsert Source Path" 
 
 	dependencies = []
 	for value in listbox.curselection():
@@ -74,20 +64,52 @@ def displayText():
 	if not error == "":
 		tkMessageBox.showerror(message=error)
 	else:
-		tkMessageBox.showinfo("Result", "Package Name: " + entryWidgetPackageName.get().strip() 
-			+ "\n Package Categorie: " + entryWidgetCategorie.get().strip() 
-			+ "\n Package Version: " + entryWidgetVersion.get().strip()
-			+ "\n Package MasterSite: " + entryWidgetMasterSite.get().strip()
-			+ "\n BROCRE Folder: " + labelBrocreFolder.get().strip()
-			+ "\n Dependencies: " + dependencies.__str__())
+		if( tkMessageBox.askokcancel("Generate package", "Package " + entryWidgetPackageName.get().strip() + " will be generated!") == 1):
+			package = packageDescription()
+			package.name = entryWidgetPackageName.get().strip()
+			package.folder = entryWidgetBrocreFolder.get().strip()
+			package.version = entryWidgetVersion.get().strip()
+			package.categories = entryWidgetCategorie.get().strip()
+			package.installedVersion = "" # not needed here
+			package.maintainer = entryWidgetMaintainer.get().strip()
+			package.homepage = entryWidgetHomepage.get().strip()
+			package.license = entryWidgetLicense.get().strip()
+			package.description = entryWidgetDescription.get(1.0, END).strip()
+			package.brief = entryWidgetBrief.get().strip()
+			package.dependencies = dependencies
+			package.masterSite = entryWidgetMasterSite.get().strip() 
+			package.fileToCheckIfInstall = entryWidgetFileToCheckIfInstall.get().strip()
+			package.sourcePath = entryWidgetSourcePath.get().strip()
+			
+			generateBrocreFiles(package)
 		
-		generateBrocreFiles(entryWidgetPackageName.get().strip(),
-			entryWidgetCategorie.get().strip(),
-			entryWidgetMasterSite.get().strip(),
-			entryWidgetVersion.get().strip(),
-			dependencies,
-			labelBrocreFolder.get().strip())
+
+def readFromROS():
+	packageName = entryWidgetPackageName.get().strip()
+	try:
+		package = rospkg.RosStack()
+		package.get_manifest(packageName)
+		fileToCheckIfInstall = packageName + "/stack.xml"
+		
+	#	version = package.get_manifest(packageName).version
+	except:
+		try:
+			package = rospkg.RosPack()
+			package.get_manifest(packageName)
+			fileToCheckIfInstall = packageName + "/manifest.xml"
+		except:
+			tkMessageBox.showerror(message="The package name is not a ROS stack or package")
+			return
 	
+	entryWidgetFileToCheckIfInstall.insert(0, fileToCheckIfInstall)
+	entryWidgetSourcePath.insert(0, package.get_path(packageName))
+	entryWidgetMaintainer.insert(0, package.get_manifest(packageName).author)
+	entryWidgetHomepage.insert(0, package.get_manifest(packageName).url)
+	entryWidgetLicense.insert(0, package.get_manifest(packageName).license)
+	entryWidgetBrief.insert(0, package.get_manifest(packageName).brief)
+	entryWidgetDescription.insert(END, package.get_manifest(packageName).description)
+
+		
 
 def selectCategorieEvent():
 	listbox.delete(0,END)
@@ -108,32 +130,61 @@ if __name__ == "__main__":
 	
 	''' Window Creation '''
 	root = Tk()
-	root.title("BROCRE Package Generator")
+	root.title("BROCRE Package Generator")	
 	  	
 	# Text Lables
 	labelPackageName = Label(root, text="Package Name:").grid(row=1, sticky=W)
 	labelCategorie = Label(root, text="Category: (separate by spaces)").grid(row=2, sticky=W)
 	labelVersion = Label(root, text="Version:").grid(row=3, sticky=W) 
-	labelMasterSite = Label(root, text="Master Site:").grid(row=4, sticky=W	) 
-	labelBrocreFolder = Label(root, text="BROCRE Folder:").grid(row=5, sticky=W	) 
+	labelMaintainer = Label(root, text="Maintainer:").grid(row=4, sticky=W) 
+	labelHomepage = Label(root, text="Homepage:").grid(row=5, sticky=W) 
+	labelLicense = Label(root, text="License:").grid(row=6, sticky=W)
+	labelBrief = Label(root, text="Brief description:").grid(row=7, sticky=W) 
+	labelDescription = Label(root, text="Description:").grid(row=8, sticky=W) 
+	labelMasterSite = Label(root, text="Master Site:").grid(row=9, sticky=W	) 
+	labelBrocreFolder = Label(root, text="BROCRE Folder:").grid(row=10, sticky=W	) 
+	labelFileToCheckIfInstall = Label(root, text="File to check if install:").grid(row=11, sticky=W	) 
+	labelSourcePath = Label(root, text="Source Path:").grid(row=12, sticky=W	) 
+	
 
 	# Input fileds
-	entryWidgetPackageName = Entry(root, width=25)
+	entryWidgetPackageName = Entry(root, width=40)
 	entryWidgetPackageName.grid(row=1, column=1, sticky=W)
-	entryWidgetCategorie = Entry(root, width=25)
+	entryWidgetCategorie = Entry(root, width=40)
 	entryWidgetCategorie.grid(row=2, column=1, sticky=W)
-	entryWidgetVersion = Entry(root, width=25)
+	entryWidgetVersion = Entry(root, width=40)
 	entryWidgetVersion.grid(row=3, column=1, sticky=W)
-	entryWidgetMasterSite = Entry(root, width=25)
-	entryWidgetMasterSite.grid(row=4, column=1, sticky=W)
-	labelBrocreFolder = Entry(root, width=25)
-	labelBrocreFolder.grid(row=5, column=1, sticky=W)
+	entryWidgetMaintainer = Entry(root, width=40)
+	entryWidgetMaintainer.grid(row=4, column=1, sticky=W)
+	
+	entryWidgetHomepage = Entry(root, width=40)
+	entryWidgetHomepage.grid(row=5, column=1, sticky=W)
+	
+	entryWidgetLicense = Entry(root, width=40)
+	entryWidgetLicense.grid(row=6, column=1, sticky=W)
+	
+	entryWidgetBrief = Entry(root, width=40)
+	entryWidgetBrief.grid(row=7, column=1, sticky=W)
+	
+	entryWidgetDescription = Text(root, width=46, height=8)
+	entryWidgetDescription.grid(row=8, column=1, sticky=W)
+	
+	entryWidgetMasterSite = Entry(root, width=40)
+	entryWidgetMasterSite.grid(row=9, column=1, sticky=W)
+	entryWidgetBrocreFolder = Entry(root, width=40)
+	entryWidgetBrocreFolder.grid(row=10, column=1, sticky=W)
+	
+	entryWidgetFileToCheckIfInstall = Entry(root, width=40)
+	entryWidgetFileToCheckIfInstall.grid(row=11, column=1, sticky=W)
+	
+	entryWidgetSourcePath = Entry(root, width=40)
+	entryWidgetSourcePath.grid(row=12, column=1, sticky=W)
 	
 	entryWidgetPackageName.insert(0, "youbot_driver")
 	entryWidgetCategorie.insert(0, "hardware youbot")
 	entryWidgetVersion.insert(0, "0.9")
 	entryWidgetMasterSite.insert(0, "http://brics.inf.h-brs.de/")
-	labelBrocreFolder.insert(0, "hardware")
+	entryWidgetBrocreFolder.insert(0, "hardware")
 	
 	
 	allPackages = extractPackageDescriptions()
@@ -149,16 +200,26 @@ if __name__ == "__main__":
 	checkbuttonRow = 0
 	checkbuttonValues = list()
 	
+	readFromROSButton = Button(root, text="read ROS xml file", command=readFromROS)
+	readFromROSButton.grid(row=13, column=0,)
+	
+	listboxframe = LabelFrame(root, text="Dependencies", bd=2, relief=SUNKEN)
+	listboxframe.grid(row=14, column=0, sticky=W, columnspan =2)
+	groupCategories = LabelFrame(listboxframe, text="Categories", padx=5, pady=5)
+	groupCategories.grid(row=0, column=0, sticky=W)
+    
 	var = StringVar()
 	for categorie in allCategories:
 		checkbuttonValues.append(StringVar())
-		cb = Checkbutton(root, text=categorie, variable=checkbuttonValues[checkbuttonRow], onvalue=categorie, offvalue="", command=selectCategorieEvent)
-		cb.grid(row=checkbuttonRow + 6, column=0, sticky=W)
+		cb = Checkbutton(groupCategories, text=categorie, variable=checkbuttonValues[checkbuttonRow], onvalue=categorie, offvalue="", command=selectCategorieEvent)
+		cb.grid(row=checkbuttonRow, column=0, sticky=W)
 		cb.deselect()
 		checkbuttonRow = checkbuttonRow + 1
 		
-	listbox = Listbox(root, selectmode=MULTIPLE)
-	listbox.grid( sticky=W)
+	
+	listbox = Listbox(listboxframe, selectmode=MULTIPLE)
+	listbox.grid(row=0, column=1, sticky=E)
+	
 
 	
 
@@ -171,5 +232,7 @@ if __name__ == "__main__":
 
 	buttonGO = Button(root, text="GO!", command=displayText)
 	buttonGO.grid()
+	
+	
 
 	root.mainloop()
