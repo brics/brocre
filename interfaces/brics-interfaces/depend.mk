@@ -17,7 +17,7 @@ DEPEND_ABI.brics-interfaces?=	brics-interfaces>=0.1
 DEPEND_DIR.brics-interfaces?=	../../interfaces/brics-interfaces
 
 SYSTEM_SEARCH.brics-interfaces=\
-	brics-interfaces/brics_actuator/manifest.xml
+	interfaces/brics-interfaces/brics_actuator/manifest.xml
 endif
 
 DEPEND_DEPTH:=		${DEPEND_DEPTH:+=}

@@ -166,7 +166,7 @@ if __name__ == "__main__":
 	entryWidgetBrief = Entry(root, width=40)
 	entryWidgetBrief.grid(row=7, column=1, sticky=W)
 	
-	entryWidgetDescription = Text(root, width=46, height=8)
+	entryWidgetDescription = Text(root, wrap=WORD, width=46, height=8)
 	entryWidgetDescription.grid(row=8, column=1, sticky=W)
 	
 	entryWidgetMasterSite = Entry(root, width=40)

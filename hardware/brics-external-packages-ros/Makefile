@@ -1,16 +1,16 @@
 # generated on 2012-02-10
 
 PACKAGE_VERSION = 0.1
-DISTNAME = brics-oodl-${PACKAGE_VERSION}
-PKGNAME = brics-oodl-${PACKAGE_VERSION}
+DISTNAME = brics-external-packages-ros-${PACKAGE_VERSION}
+PKGNAME = brics-external-packages-ros-${PACKAGE_VERSION}
 CATEGORIES = hardware
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
-MAINTAINER = BRSU
-HOMEPAGE = https://github.com/janpaulus/BRICS_OODL
-COMMENT = brics-oodl
-LICENSE = gnu-lgpl-v2.1 modified-bsd
+MAINTAINER = Maintained by Jan Paulus
+HOMEPAGE = https://github.com/janpaulus/brics-external-packages-ros
+COMMENT = brics-external-hardware-driver
+LICENSE = modified-bsd
 
 NO_CONFIGURE = yes
 NO_BUILD = yes

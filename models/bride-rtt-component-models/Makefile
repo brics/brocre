@@ -2,15 +2,15 @@
 #
 
 PACKAGE_VERSION=	0.1
-DISTNAME=		youbot-applications-${PACKAGE_VERSION}
-PKGNAME=		youbot-applications-${PACKAGE_VERSION}
-CATEGORIES=		youbot
+DISTNAME=		bride-rtt-component-models-${PACKAGE_VERSION}
+PKGNAME=		bride-rtt-component-models-${PACKAGE_VERSION}
+CATEGORIES=		OROCOS-RTT models
 MASTER_SITES=		http://brics.inf.h-brs.de/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git
 
-MAINTAINER=		Walter Nowak 
-HOMEPAGE=		http://youbot-store.com
-COMMENT=		Applications for the KUKA youBot
+MAINTAINER=		Azamat Shakhimardanov
+HOMEPAGE=		https://github.com/nicoh/BRICS_Components
+COMMENT=		OROCOS RTT component models
 LICENSE=		gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE=		yes
@@ -22,6 +22,5 @@ NO_EXTRACT=		yes
 do-install:
 	${RUN} tar -C $(ROBOTPKG_BASE) -xvf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}
 
-include ../../hardware/youbot-driver/depend.mk
 include ../../mk/robotpkg.mk
 

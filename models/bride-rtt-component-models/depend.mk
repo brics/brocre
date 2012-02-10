@@ -16,8 +16,7 @@ DEPEND_USE+=		bride-rtt-component-models
 DEPEND_ABI.bride-rtt-component-models?=	bride-rtt-component-models>=0.1
 DEPEND_DIR.bride-rtt-component-models?=	../../rtt-component-models/bride-rtt-component-models
 
-SYSTEM_SEARCH.bride-rtt-component-models=\
-	gripper-bride-rtt-component-model/.project
+SYSTEM_SEARCH.bride-rtt-component-models=models/gripper-bride-rtt-component-model/.project
 endif
 
 DEPEND_DEPTH:=		${DEPEND_DEPTH:+=}

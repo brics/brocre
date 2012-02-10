@@ -1,7 +1,9 @@
+# generated on 2012-02-10
+
 PACKAGE_VERSION = 0.1
 DISTNAME = brics-3d-${PACKAGE_VERSION}
 PKGNAME = brics-3d-${PACKAGE_VERSION}
-CATEGORIES = algorithm
+CATEGORIES = algorithm perception
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 

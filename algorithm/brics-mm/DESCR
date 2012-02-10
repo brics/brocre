@@ -1,1 +1,1 @@
-The sourcecode of BRICS_MM must be checked out directly from SVN. No designated releases or binaries are provided up to now.
+BRICS_MM is the BRICS library for mobile manipulation, including various algorithms for path planning.

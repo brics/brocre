@@ -3,8 +3,8 @@
 
 COMMENT=	Hartware
 
-SUBDIR+=	brics-external-hardware-driver
+SUBDIR+=	brics-external-packages-ros
 SUBDIR+=	brics-oodl
-SUBDIR+=	youbot-driver
+SUBDIR+=	youbot_driver
 
 include ../mk/robotpkg.subdir.mk

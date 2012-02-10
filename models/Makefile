@@ -1,7 +1,7 @@
-# robotpkg rtt-models
+# robotpkg models
 #
 
-COMMENT=	rtt-models
+COMMENT=	models
 
 SUBDIR+=	bride-rtt-component-models
 

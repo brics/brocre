@@ -54,6 +54,6 @@ SUBDIR+=	interfaces
 #SUBDIR+=	net
 #SUBDIR+=	pkgtools
 SUBDIR+=	youbot
-SUBDIR+=	rtt-component-models
+SUBDIR+=	models
 
 include mk/robotpkg.subdir.mk

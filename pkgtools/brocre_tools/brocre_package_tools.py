@@ -1,4 +1,3 @@
-import rospkg
 import commands
 import string
 import os
