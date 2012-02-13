@@ -4,12 +4,11 @@ from Tkinter import *
 
 import os
 import tkMessageBox
-import tkFileDialog 
 import commands
+from threading import Thread
 
-#Ros Stuff
-import rospkg
 import operator
+import subprocess
 
 #Pakage Generation Script
 from brocre_package_tools import *
@@ -26,6 +25,48 @@ global buttonUninstall
 allPackages = []
 MAKEFILE_NAME = "Makefile"
 ROBOT_PACKAGE_PATH = "../../"
+
+def runProcess(exe):  
+    p = subprocess.Popen(exe, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    while(True):
+        retcode = p.poll() #returns None while subprocess is running
+        line = p.stdout.readline()
+        yield line
+        if(retcode is not None):
+            # if process ends read all line with still remain in the pipe 
+            newline = ""
+            while(True):
+                newline = p.stdout.readline()
+                if newline == "":
+                    break
+                line = line + newline
+                yield line
+            break
+
+def executeCommand(exe):
+    buttonInstall.config(state=DISABLED)
+    buttonUninstall.config(state=DISABLED)
+    buttonupdateBROCRE.config(state=DISABLED)
+
+    data = runProcess(exe) 
+    for i in data:
+        printIntoConsoleBox(i)
+
+    printIntoConsoleBox("Done!\n")
+    updateAllPackageDescriptions()
+    buttonupdateBROCRE.config(state=NORMAL)
+    
+def printIntoConsoleBox(line):
+    consoleOutput.config(state=NORMAL)
+    consoleOutput.insert(END,line)
+    consoleOutput.yview_moveto(1)  
+    consoleOutput.config(state=DISABLED)
+    
+def executeCommandWithRestart(exe):
+    executeCommand(exe)
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
+
 
 def updateAllPackageDescriptions():
     global allPackages
@@ -48,15 +89,14 @@ def installbutton():
             if package.name ==listbox.get(listbox.curselection()):
                 currentPackage = package
     
+    
     if not error == "":
         tkMessageBox.showerror(message=error)
     else:
         if( tkMessageBox.askokcancel("Install package", "Package " + currentPackage.name + " will be installed!") == 1):
-            consoleOutput.config(state=NORMAL)
-            consoleOutput.insert(END, commands.getoutput("make -C " + ROBOT_PACKAGE_PATH + currentPackage.folder +"/" +  currentPackage.name  + " update"))
-            consoleOutput.yview_moveto(1)
-            consoleOutput.config(state=DISABLED)
-            updateAllPackageDescriptions()
+            command = ['make', '-C', ROBOT_PACKAGE_PATH + currentPackage.folder +"/" +  currentPackage.name, 'update']
+            t = Thread(target=executeCommand, args=(command,))
+            t.start()
         
         
 def uninstallbutton():
@@ -76,11 +116,9 @@ def uninstallbutton():
         tkMessageBox.showerror(message=error)
     else:
         if( tkMessageBox.askokcancel("Uninstall package", "Package " + currentPackage.name + " will be uninstalled!") == 1):
-            consoleOutput.config(state=NORMAL)
-            consoleOutput.insert(END, commands.getoutput("robotpkg_delete " +  currentPackage.name))
-            consoleOutput.yview_moveto(1)
-            consoleOutput.config(state=DISABLED)
-            updateAllPackageDescriptions()
+            command = ["robotpkg_delete", currentPackage.name]
+            t = Thread(target=executeCommand, args=(command,))
+            t.start()
         
 def compilebutton():
     #Show Error if values are not entered
@@ -99,22 +137,19 @@ def compilebutton():
         tkMessageBox.showerror(message=error)
     else:
         if( tkMessageBox.askokcancel("Compile package", "Package " + currentPackage.name + " will be compiled!") == 1):
-            consoleOutput.config(state=NORMAL)
-            consoleOutput.insert(END, commands.getoutput("rosmake " + currentPackage.name))
-            consoleOutput.yview_moveto(1)
-            consoleOutput.config(state=DISABLED)
+            command = ["rosmake" , currentPackage.name]
+            t = Thread(target=executeCommand, args=(command,))
+            t.start()
 
         
 def updateBROCREbutton():
     #Show Error if values are not entered
  #   tkMessageBox.showinfo("Result", "BROCRE will be updated!" )
     if( tkMessageBox.askokcancel("BROCRE update", "BROCRE will be updated!") == 1):
-        consoleOutput.config(state=NORMAL)
-        consoleOutput.insert(END, commands.getoutput("git pull origin master"))
-        consoleOutput.yview_moveto(1)
-        consoleOutput.config(state=DISABLED)
-        python = sys.executable
-        os.execl(python, python, * sys.argv)
+        printIntoConsoleBox("Updating ...")
+        command = ["git","pull", "origin", "master"]
+        t = Thread(target=executeCommandWithRestart, args=(command,))
+        t.start()
 
   
 def selectCategorieEvent():
@@ -227,8 +262,8 @@ if __name__ == "__main__":
     buttonInstall.grid( row=1,column=0,rowspan=2, sticky=W)
     buttonUninstall = Button(descriptionFrame, text="Uninstall", command=uninstallbutton)
     buttonUninstall.grid( row=1,column=0, sticky=N)
- #   buttonCompile = Button(root, text="Compile", command=compilebutton)
- #   buttonCompile.grid()
+   # buttonCompile = Button(root, text="Compile", command=compilebutton)
+   # buttonCompile.grid()
     buttonupdateBROCRE = Button(descriptionFrame, text="Update BROCRE", command=updateBROCREbutton)
     buttonupdateBROCRE.grid( row=1,column=0, sticky=E)
     
@@ -259,8 +294,6 @@ if __name__ == "__main__":
     consoleframe.grid(row=10,columnspan=2, column=0, sticky=W)
     
 
-#    consoleOutput = Text(root, wrap=WORD, height = 10, width = 110, yscrollcommand=scrollbar.set)
- #   consoleOutput.grid(row=10,columnspan=2, column=0, sticky=W)
     
     selectCategorieEvent()
 
