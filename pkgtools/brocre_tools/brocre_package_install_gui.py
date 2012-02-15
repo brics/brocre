@@ -238,7 +238,7 @@ if __name__ == "__main__":
         cb.select()
         checkbuttonRow = checkbuttonRow + 1
         
-    listboxframe = LabelFrame(root, text="Packages / Stacks", bd=2, relief=SUNKEN)
+    listboxframe = LabelFrame(root, text="BROCRE Packages", bd=2, relief=SUNKEN)
     listbox = Listbox(listboxframe, selectmode=SINGLE, height = 12, width = 30)
     listbox.grid( sticky=W)
     listboxframe.grid( sticky=W)
