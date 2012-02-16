@@ -44,6 +44,8 @@ def runProcess(exe):
             break
 
 def executeCommand(exe):
+    listbox.select_clear(listbox.curselection())
+    listbox.config(state=DISABLED)
     buttonInstall.config(state=DISABLED)
     buttonUninstall.config(state=DISABLED)
     buttonupdateBROCRE.config(state=DISABLED)
@@ -53,8 +55,9 @@ def executeCommand(exe):
         printIntoConsoleBox(i)
 
     printIntoConsoleBox("Done!\n")
-    updateAllPackageDescriptions()
     buttonupdateBROCRE.config(state=NORMAL)
+    listbox.config(state=NORMAL)
+    updateAllPackageDescriptions()
     
 def printIntoConsoleBox(line):
     consoleOutput.config(state=NORMAL)
@@ -194,6 +197,7 @@ def updateCurrentPackageDescription(event):
         else:
             buttonUninstall.config(state=NORMAL)
             buttonInstall.config(state=DISABLED)
+            
         textField.config(state=NORMAL)
         textField.delete(1.0, END)
         textField.insert(END, text)
@@ -213,7 +217,6 @@ if __name__ == "__main__":
     root = Tk()
     root.title("BROCRE Package Installer")
           
-    
     allPackages = extractPackageDescriptions()
         
     allCategories = list()
