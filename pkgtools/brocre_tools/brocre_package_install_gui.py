@@ -231,7 +231,7 @@ if __name__ == "__main__":
     checkbuttonValues = list()
     
     groupCategories = LabelFrame(root, text="Categories", padx=5, pady=5)
-    groupCategories.grid(row=0, column=0, sticky=W)
+    groupCategories.grid(row=0, column=0, sticky=N+S+W)
     
     var = StringVar()
     for categorie in allCategories:
@@ -242,17 +242,17 @@ if __name__ == "__main__":
         checkbuttonRow = checkbuttonRow + 1
         
     listboxframe = LabelFrame(root, text="BROCRE Packages", bd=2, relief=SUNKEN)
-    listbox = Listbox(listboxframe, selectmode=SINGLE, height = 12, width = 30)
-    listbox.grid( sticky=W)
-    listboxframe.grid( sticky=W)
+    listbox = Listbox(listboxframe, selectmode=SINGLE, width = 30)
+    listbox.grid( sticky=N+S+W)
+    listboxframe.grid(row=0, column=1, sticky=N+S+W)
 
     root.bind("<Button-1>", updateCurrentPackageDescription)
     root.bind("<Key>", updateCurrentPackageDescription)
     
     descriptionFrame = LabelFrame(root, text="Description", padx=5, pady=5)
-    descriptionFrame.grid(row=0, column=1,rowspan=2, sticky=N)
+    descriptionFrame.grid(row=0, column=2,rowspan=2, sticky=N)
     textField = Text(descriptionFrame, height = 20)
-    textField.grid(row=0, column=0, sticky=W)
+    textField.grid(row=0, column=0, sticky=N)
     
 
 
@@ -276,9 +276,6 @@ if __name__ == "__main__":
     
     consoleframe = LabelFrame(root, text="Console", bd=2, relief=SUNKEN)
     
-    consoleframe.grid_rowconfigure(0, weight=1)
-    consoleframe.grid_columnconfigure(0, weight=1)
-    
     xscrollbar = Scrollbar(consoleframe, orient=HORIZONTAL)
     xscrollbar.grid(row=1, column=0, sticky=E+W)
     
@@ -294,9 +291,19 @@ if __name__ == "__main__":
     
     xscrollbar.config(command=consoleOutput.xview)
     yscrollbar.config(command=consoleOutput.yview)
-    consoleframe.grid(row=10,columnspan=2, column=0, sticky=W)
+    consoleframe.grid(row=10,columnspan=3, column=0, sticky=N+S+E+W)
     
-
+    
+ #   consoleOutput.grid_columnconfigure(0,weight=1)
+    consoleframe.grid_columnconfigure(0,weight=1)
+    consoleframe.grid_rowconfigure(0, weight=1)
+    
+    root.grid_columnconfigure(0,weight=1)
+    root.grid_rowconfigure(0,weight=1)
+    #root.grid_columnconfigure(1,weight=1)
+    #root.grid_rowconfigure(2,weight=1)
+    #root.grid_columnconfigure(1,weight=1)
+    root.grid_rowconfigure(10,weight=10000)
     
     selectCategorieEvent()
 
