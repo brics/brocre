@@ -270,6 +270,7 @@ if __name__ == "__main__":
     allCategories = list(set(allCategories))
     allCategories.sort(cmp=None, key=None, reverse=False)
     
+    # Categories Frame
     checkbuttonRow = 0
     checkbuttonValues = list()
     
@@ -284,6 +285,8 @@ if __name__ == "__main__":
         cb.select()
         checkbuttonRow = checkbuttonRow + 1
         
+        
+    # Packages Listbox Frame    
     listboxframe = LabelFrame(root, text="BROCRE Packages", bd=2, relief=SUNKEN)
     yscrollbarlistbox = Scrollbar(listboxframe)
     yscrollbarlistbox.grid(row=0, column=1, sticky=N+S)
@@ -295,25 +298,32 @@ if __name__ == "__main__":
     listbox.grid(row=0, column=0, sticky=N+S+W)
     yscrollbarlistbox.config(command=listbox.yview)
     
-    
-    
-
     root.bind("<Button-1>", updateCurrentPackageDescription)
     root.bind("<Key>", updateCurrentPackageDescription)
     
+    # Legned Frame   
+    
+    Legendframe = LabelFrame(root, text="BROCRE Packages Legend", bd=2, relief=SUNKEN)
+    Legendframe.grid(row=1, column=1, sticky=N+S+W+E)
+    legend1 = Label(Legendframe, text="available", background='white', relief=RIDGE)
+    legend1.grid(row=0, column=0, sticky=W)
+    legend2 = Label(Legendframe, text=" ", )
+    legend2.grid(row=0, column=1, sticky=W)
+    legend3 = Label(Legendframe, text="installed", background='green', relief=RIDGE)
+    legend3.grid(row=0, column=2, sticky=N)
+    legend4 = Label(Legendframe, text=" ", )
+    legend4.grid(row=0, column=3, sticky=W)
+    legend5 = Label(Legendframe, text="new version available", background='orange', relief=RIDGE)
+    legend5.grid(row=0, column=4, sticky=E)
+    
+    # Description Frame   
+
     descriptionFrame = LabelFrame(root, text="Description", padx=5, pady=5)
     descriptionFrame.grid(row=0, column=2, sticky=N+S+W+E)
     descriptionFrame.grid_columnconfigure(0,weight=1)
     textField = Text(descriptionFrame, wrap=WORD, height = 20)
     textField.grid(row=0, column=0, sticky=N+S+W+E)
     
-
-
-    
-    # Buttons
-    #buttonOpenFile = Button(root, text="...", command=openFile, height =1)
-    #buttonOpenFile.grid(row=0,column=3, sticky=W )
-
     buttonInstall = Button(descriptionFrame, text="Install", command=installbutton)
     buttonInstall.grid( row=1,column=0,rowspan=2, sticky=W)
     buttonUninstall = Button(descriptionFrame, text="Uninstall", command=uninstallbutton)
@@ -327,6 +337,7 @@ if __name__ == "__main__":
     buttonUninstall.config(state=DISABLED)
     
     
+    # Console Frame
     consoleframe = LabelFrame(root, text="Console", bd=2, relief=SUNKEN)
     
     xscrollbar = Scrollbar(consoleframe, orient=HORIZONTAL)
@@ -335,32 +346,33 @@ if __name__ == "__main__":
     yscrollbar = Scrollbar(consoleframe)
     yscrollbar.grid(row=0, column=1, sticky=N+S)
     
-    consoleOutput = Text(consoleframe, wrap=WORD, bd=0, height = 10, width = 115,
+    consoleOutput = Text(consoleframe, wrap=WORD, bd=0, height = 15, width = 115,
                 xscrollcommand=xscrollbar.set,
                 yscrollcommand=yscrollbar.set)
     
     consoleOutput.grid(row=0, column=0, sticky=N+S+E+W)
     
-    
+
     xscrollbar.config(command=consoleOutput.xview)
     yscrollbar.config(command=consoleOutput.yview)
-    consoleframe.grid(row=1,columnspan=3, column=0, sticky=N+S+E+W)
+    consoleframe.grid(row=2,columnspan=3, column=0, sticky=N+S+E+W)
     
     
  #   consoleOutput.grid_columnconfigure(0,weight=1)
     consoleframe.grid_columnconfigure(0,weight=1)
     consoleframe.grid_rowconfigure(0, weight=1)
     
-
+    
     root.grid_columnconfigure(2,weight=1)
     root.grid_rowconfigure(0,weight=1)
     #root.grid_columnconfigure(1,weight=1)
     #root.grid_rowconfigure(2,weight=1)
     #root.grid_columnconfigure(1,weight=1)
-    root.grid_rowconfigure(1,weight=10000)
+    root.grid_rowconfigure(2,weight=10000)
+    
+    
     
     selectCategorieEvent()
-    
-    
+
 
     root.mainloop()
