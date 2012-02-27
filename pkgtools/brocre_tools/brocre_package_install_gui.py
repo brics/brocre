@@ -12,6 +12,8 @@ import subprocess
 
 #Pakage Generation Script
 from brocre_package_tools import *
+import tkSimpleDialog
+import tkFont
 
 global checkbuttonValues
 global listbox
@@ -25,6 +27,32 @@ global buttonUninstall
 allPackages = []
 MAKEFILE_NAME = "Makefile"
 ROBOT_PACKAGE_PATH = "../../"
+
+
+
+class DeletePackageDialog(tkSimpleDialog.Dialog):
+    message = ""
+    isOKpressed = False
+    
+    
+    def __init__(self, parent, title = None, text = None):
+        self.message = text
+        tkSimpleDialog.Dialog.__init__(self, parent, title)
+
+    def body(self, master):
+        w = Label(master, text=self.message,font=(16))
+        f = tkFont.Font() 
+        f['weight'] = 'bold' 
+        w['font'] = f.name 
+        w.grid(row=0)
+        self.deleteCheckbuttonState = IntVar()
+        self.cb = Checkbutton(master, variable=self.deleteCheckbuttonState, text="Delete ALL files in the package folder?")
+        self.cb.grid(row=1, sticky=N)
+        return self.cb # initial focus
+
+    def apply(self):
+        self.isOKpressed = True
+        
 
 def runProcess(exe):  
     p = subprocess.Popen(exe, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -65,6 +93,10 @@ def printIntoConsoleBox(line):
     consoleOutput.insert(END,line)
     consoleOutput.yview_moveto(1)  
     consoleOutput.config(state=DISABLED)
+    
+def executeTwoCommandSequential(exe, exe2):
+    executeCommand(exe)
+    executeCommand(exe2)
     
 def executeCommandWithRestart(exe):
     executeCommand(exe)
@@ -119,10 +151,20 @@ def uninstallbutton():
     if not error == "":
         tkMessageBox.showerror(message=error)
     else:
-        if( tkMessageBox.askokcancel("Uninstall package", "Package " + currentPackage.name + " will be uninstalled!") == 1):
-            command = ["robotpkg_delete", currentPackage.name]
-            t = Thread(target=executeCommand, args=(command,))
-            t.start()
+        deleteDialogRoot = DeletePackageDialog(root,"Uninstall package",  "Package " + currentPackage.name + " will be uninstalled!")
+        if(deleteDialogRoot.isOKpressed):
+            printIntoConsoleBox("Uninstalling ...")
+            if(deleteDialogRoot.deleteCheckbuttonState.get() == 1):
+                command = ["robotpkg_delete", currentPackage.name]
+                packagePath = os.environ['ROBOTPKG_BASE'] +"/"+ currentPackage.folder+"/"+currentPackage.name
+                command2 = ["rm","-r", packagePath]
+                t = Thread(target=executeTwoCommandSequential, args=(command,command2,))
+                t.start()
+            else:
+                command = ["robotpkg_delete", currentPackage.name]
+                t = Thread(target=executeCommand, args=(command,))
+                t.start()
+
         
 def compilebutton():
     #Show Error if values are not entered
@@ -243,9 +285,17 @@ if __name__ == "__main__":
         checkbuttonRow = checkbuttonRow + 1
         
     listboxframe = LabelFrame(root, text="BROCRE Packages", bd=2, relief=SUNKEN)
+    yscrollbarlistbox = Scrollbar(listboxframe)
+    yscrollbarlistbox.grid(row=0, column=1, sticky=N+S)
     listboxframe.grid(row=0, column=1, sticky=N+S+W)
-    listbox = Listbox(listboxframe, selectmode=SINGLE, width = 30)
-    listbox.grid( sticky=N+S+W)
+    listboxheight = checkbuttonRow
+    if listboxheight < 21:
+        listboxheight = 21
+    listbox = Listbox(listboxframe, selectmode=SINGLE, height=listboxheight , width = 30, yscrollcommand=yscrollbarlistbox.set)
+    listbox.grid(row=0, column=0, sticky=N+S+W)
+    yscrollbarlistbox.config(command=listbox.yview)
+    
+    
     
 
     root.bind("<Button-1>", updateCurrentPackageDescription)
@@ -310,5 +360,7 @@ if __name__ == "__main__":
     root.grid_rowconfigure(1,weight=10000)
     
     selectCategorieEvent()
+    
+    
 
     root.mainloop()
