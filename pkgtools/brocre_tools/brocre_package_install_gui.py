@@ -44,7 +44,8 @@ def runProcess(exe):
             break
 
 def executeCommand(exe):
-    listbox.select_clear(listbox.curselection())
+    if not len(listbox.curselection()) == 0:
+        listbox.select_clear(listbox.curselection())
     listbox.config(state=DISABLED)
     buttonInstall.config(state=DISABLED)
     buttonUninstall.config(state=DISABLED)
@@ -242,17 +243,19 @@ if __name__ == "__main__":
         checkbuttonRow = checkbuttonRow + 1
         
     listboxframe = LabelFrame(root, text="BROCRE Packages", bd=2, relief=SUNKEN)
+    listboxframe.grid(row=0, column=1, sticky=N+S+W)
     listbox = Listbox(listboxframe, selectmode=SINGLE, width = 30)
     listbox.grid( sticky=N+S+W)
-    listboxframe.grid(row=0, column=1, sticky=N+S+W)
+    
 
     root.bind("<Button-1>", updateCurrentPackageDescription)
     root.bind("<Key>", updateCurrentPackageDescription)
     
     descriptionFrame = LabelFrame(root, text="Description", padx=5, pady=5)
-    descriptionFrame.grid(row=0, column=2,rowspan=2, sticky=N)
-    textField = Text(descriptionFrame, height = 20)
-    textField.grid(row=0, column=0, sticky=N)
+    descriptionFrame.grid(row=0, column=2, sticky=N+S+W+E)
+    descriptionFrame.grid_columnconfigure(0,weight=1)
+    textField = Text(descriptionFrame, wrap=WORD, height = 20)
+    textField.grid(row=0, column=0, sticky=N+S+W+E)
     
 
 
@@ -291,19 +294,20 @@ if __name__ == "__main__":
     
     xscrollbar.config(command=consoleOutput.xview)
     yscrollbar.config(command=consoleOutput.yview)
-    consoleframe.grid(row=10,columnspan=3, column=0, sticky=N+S+E+W)
+    consoleframe.grid(row=1,columnspan=3, column=0, sticky=N+S+E+W)
     
     
  #   consoleOutput.grid_columnconfigure(0,weight=1)
     consoleframe.grid_columnconfigure(0,weight=1)
     consoleframe.grid_rowconfigure(0, weight=1)
     
-    root.grid_columnconfigure(0,weight=1)
+
+    root.grid_columnconfigure(2,weight=1)
     root.grid_rowconfigure(0,weight=1)
     #root.grid_columnconfigure(1,weight=1)
     #root.grid_rowconfigure(2,weight=1)
     #root.grid_columnconfigure(1,weight=1)
-    root.grid_rowconfigure(10,weight=10000)
+    root.grid_rowconfigure(1,weight=10000)
     
     selectCategorieEvent()
 
