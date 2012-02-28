@@ -2,6 +2,7 @@
 
 from Tkinter import *
 
+import webbrowser
 import os
 import tkMessageBox
 import commands
@@ -23,11 +24,9 @@ global consoleOutput
 global buttonInstall
 global buttonUninstall
 
-
 allPackages = []
 MAKEFILE_NAME = "Makefile"
 ROBOT_PACKAGE_PATH = "../../"
-
 
 
 class DeletePackageDialog(tkSimpleDialog.Dialog):
@@ -217,8 +216,18 @@ def selectCategorieEvent():
             if float(package.installedVersion) < float(package.version):
                 listbox.itemconfig(END, background="orange")
                     
+def URL_click(event):
+    if not len(listbox.curselection()) == 0:
+        currentPackage = packageDescription()
+        for package in allPackages:
+            if package.name ==listbox.get(listbox.curselection()):
+                currentPackage = package
+        webbrowser.open_new(currentPackage.homepage)
         
 def updateCurrentPackageDescription(event):
+    if event.widget == textField or event.widget == consoleOutput:
+        return
+    
     if not len(listbox.curselection()) == 0:
         currentPackage = packageDescription()
         
@@ -226,14 +235,23 @@ def updateCurrentPackageDescription(event):
             if package.name ==listbox.get(listbox.curselection()):
                 currentPackage = package
                 
+        textField.config(state=NORMAL)
+        textField.delete(1.0, END)
+        
         text = "Package: " + currentPackage.name + "\n" + \
         "Version: " + currentPackage.version +"\n" \
         "Installed version: " + currentPackage.installedVersion +"\n" \
         "Categories: " + currentPackage.categories.__str__() +"\n" \
         "Maintainer: " + currentPackage.maintainer +"\n" \
-        "Homepage: " + currentPackage.homepage +"\n" \
-        "License: " + currentPackage.license +"\n\n" \
+        "Homepage: "
+        textField.insert(END, text)
+        textField.insert(INSERT, currentPackage.homepage, "hyper")
+        text =  "\nLicense: " + currentPackage.license +"\n\n" \
         "Description: " + currentPackage.description +"\n"
+        textField.insert(END, text)
+        
+        textField.config(state=DISABLED)
+        
         if currentPackage.installedVersion == "":
             buttonInstall.config(state=NORMAL)
             buttonUninstall.config(state=DISABLED)
@@ -241,10 +259,8 @@ def updateCurrentPackageDescription(event):
             buttonUninstall.config(state=NORMAL)
             buttonInstall.config(state=DISABLED)
             
-        textField.config(state=NORMAL)
-        textField.delete(1.0, END)
-        textField.insert(END, text)
-        textField.config(state=DISABLED)
+        
+        
     else:
         textField.config(state=NORMAL)
         textField.delete(1.0, END)
@@ -323,6 +339,12 @@ if __name__ == "__main__":
     descriptionFrame.grid_columnconfigure(0,weight=1)
     textField = Text(descriptionFrame, wrap=WORD, height = 20)
     textField.grid(row=0, column=0, sticky=N+S+W+E)
+    textField.tag_config("hyper", foreground="blue", underline=1)
+       # textField.tag_bind("a", "<Enter>", URL_click)
+       # textField.tag_bind("a", "<Leave>", URL_click)
+    textField.tag_bind("hyper", "<Button-1>", URL_click)
+    textField.config(cursor="arrow")
+    
     
     buttonInstall = Button(descriptionFrame, text="Install", command=installbutton)
     buttonInstall.grid( row=1,column=0,rowspan=2, sticky=W)
