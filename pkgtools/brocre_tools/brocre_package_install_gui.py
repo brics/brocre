@@ -107,8 +107,7 @@ def updateAllPackageDescriptions():
     global allPackages
     allPackages = extractPackageDescriptions()
     selectCategorieEvent()
-    event =""
-    updateCurrentPackageDescription(event)
+    updateCurrentPackageDescription()
 
 
 def installbutton():
@@ -223,11 +222,14 @@ def URL_click(event):
             if package.name ==listbox.get(listbox.curselection()):
                 currentPackage = package
         webbrowser.open_new(currentPackage.homepage)
-        
-def updateCurrentPackageDescription(event):
+    
+def updateCurrentPackageDescriptionEvent(event):
     if event.widget == textField or event.widget == consoleOutput:
         return
-    
+    updateCurrentPackageDescription()
+        
+def updateCurrentPackageDescription():
+
     if not len(listbox.curselection()) == 0:
         currentPackage = packageDescription()
         
@@ -314,8 +316,8 @@ if __name__ == "__main__":
     listbox.grid(row=0, column=0, sticky=N+S+W)
     yscrollbarlistbox.config(command=listbox.yview)
     
-    root.bind("<Button-1>", updateCurrentPackageDescription)
-    root.bind("<Key>", updateCurrentPackageDescription)
+    root.bind("<Button-1>", updateCurrentPackageDescriptionEvent)
+    root.bind("<Key>", updateCurrentPackageDescriptionEvent)
     
     # Legned Frame   
     
