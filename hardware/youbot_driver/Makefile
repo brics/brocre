@@ -8,7 +8,7 @@ MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Jan Paulus/jan.paulus@h-brs.de
-HOMEPAGE = http://youbot.github.com/youbot_driver/
+HOMEPAGE = https://github.com/youbot/youbot_driver
 COMMENT = youbot_driver
 LICENSE = gnu-lgpl-v2.1 modified-bsd
 
