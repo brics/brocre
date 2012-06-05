@@ -4,7 +4,7 @@
 COMMENT=	youBot
 
 SUBDIR+=	youbot-stack-utwente
-SUBDIR+=	youbot-locomotec
+SUBDIR+=	youbot-ros-pkg
 SUBDIR+=	youbot_applications
 
 
