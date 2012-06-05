@@ -212,7 +212,7 @@ def selectCategorieEvent():
         if not package.installedVersion == "":
             if package.installedVersion == package.version:
                 listbox.itemconfig(END, background="green")
-            if float(package.installedVersion) < float(package.version):
+            if package.installedVersion != package.version:
                 listbox.itemconfig(END, background="orange")
                     
 def URL_click(event):
