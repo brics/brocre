@@ -1,4 +1,4 @@
-# File: hello1.py
+#!/usr/bin/python
 
 from Tkinter import *
 
