@@ -1,8 +1,8 @@
 # generated on 2012-06-08
 
 PACKAGE_VERSION = 0.1
-DISTNAME = youbot-manipulation-${PACKAGE_VERSION}
-PKGNAME = youbot-manipulation-${PACKAGE_VERSION}
+DISTNAME = b-it-bots_youbot-manipulation-${PACKAGE_VERSION}
+PKGNAME = b-it-bots_youbot-manipulation-${PACKAGE_VERSION}
 CATEGORIES = youbot
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 

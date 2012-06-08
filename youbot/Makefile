@@ -3,7 +3,7 @@
 
 COMMENT=	youBot
 
-SUBDIR+=	youbot-manipulation
+SUBDIR+=	b-it-bots_youbot-manipulation
 SUBDIR+=	youbot-stack-utwente
 SUBDIR+=	youbot-ros-pkg
 SUBDIR+=	youbot_applications
