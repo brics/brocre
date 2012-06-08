@@ -20,5 +20,6 @@ do-install:
 	${RUN} tar -C $(ROBOTPKG_BASE) -xvf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}
 
 include ../../youbot/b-it-bots_youbot-ros-pkg/depend.mk
+include ../../youbot/youbot-manipulation/depend.mk
 include ../../hardware/youbot_driver/depend.mk
 include ../../mk/robotpkg.mk
