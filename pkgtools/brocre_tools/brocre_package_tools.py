@@ -70,8 +70,6 @@ def extractPackageDescriptions():
         packageDescriptionsList[folder] = extractPackagesFromRobotPKGMakefile(ROBOT_PACKAGE_PATH + folder +"/"+ MAKEFILE_NAME)
         
     allPackages = []
-
-    robotpkgInfoText = commands.getoutput("robotpkg_info")
     
     for folder in packageDescriptionsList.keys():
         for package in packageDescriptionsList[folder]:
@@ -82,6 +80,7 @@ def extractPackageDescriptions():
             DESCRfile.close()
             currentpackage.name = package
             currentpackage.folder = folder
+            robotpkgInfoText = commands.getoutput("robotpkg_info -e "+currentpackage.name)
             parseRobotpkgInfo(robotpkgInfoText,currentpackage)
             allPackages.append(currentpackage)
             
