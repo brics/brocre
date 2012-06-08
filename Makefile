@@ -48,6 +48,7 @@
 #
 
 SUBDIR+=	algorithm
+SUBDIR+=	brics
 #SUBDIR+=	archivers
 SUBDIR+=	hardware
 SUBDIR+=	interfaces

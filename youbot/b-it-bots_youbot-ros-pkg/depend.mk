@@ -13,7 +13,7 @@ DEPEND_USE+=        b-it-bots_youbot-ros-pkg
 DEPEND_ABI.b-it-bots_youbot-ros-pkg?=    b-it-bots_youbot-ros-pkg>=0.1
 DEPEND_DIR.b-it-bots_youbot-ros-pkg?=    ../../youbot/b-it-bots_youbot-ros-pkg
 
-SYSTEM_SEARCH.b-it-bots_youbot-ros-pkg=youbot/youbot-ros-pkg/youbot_common/stack.xml
+SYSTEM_SEARCH.b-it-bots_youbot-ros-pkg=youbot/b-it-bots_youbot-ros-pkg/youbot_common/stack.xml
 endif
 
 DEPEND_DEPTH:=        ${DEPEND_DEPTH:+=}
