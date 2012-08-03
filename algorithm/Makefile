@@ -3,6 +3,7 @@
 
 COMMENT=	Algorithm
 
+SUBDIR+=  artoolkitplusstack
 SUBDIR+=	brics_3d
 SUBDIR+=	brics-mm
 
