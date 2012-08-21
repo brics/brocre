@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>BRICS - BROCRE Alpha Release</title>
+  <base  href="http://www.best-of-robotics.org/__baseuri" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+  </script>
+  <script type="text/javascript">
+                        function real_width(element)
+                        {
+                                return element.width() + parseInt(element.css('paddingLeft')) + parseInt(element.css('paddingRight')) + parseInt(element.css('marginLeft')) + parseInt(element.css('marginRight'));
+                        }
+                        function real_height(element)
+                        {
+                                return element.height() + parseInt(element.css('paddingTop')) + parseInt(element.css('paddingBottom')) + parseInt(element.css('marginTop')) + parseInt(element.css('marginBottom'));
+                        }
+                        function fit_fontsize ()
+                        {
+                                if ($(window).width() > 800)
+                                        $('body').css('fontSize', "15px");
+                                else if ($(window).width() > 600)
+                                        $('body').css('fontSize', "13px");
+                                else if ($(window).width() > 400)
+                                        $('body').css('fontSize', "11px");
+                                else if ($(window).width() > 300)
+                                        $('body').css('fontSize', "10px");
+                                else if ($(window).width() > 200)
+                                        $('body').css('fontSize', "8px");
+                        }
+                        function fit_content ()
+                        {
+                                var w = $(document).width();
+                                if (w > 1100) w = 1100;
+                                $('#content').width(w - real_width($('#navigation')) - (parseInt($('#navigation').css('paddingLeft')) + parseInt($('#navigation').css('paddingRight')) + parseInt($('#navigation').css('marginLeft')) + parseInt($('#navigation').css('marginRight'))));
+                        }
+                        $(document).ready(function ()
+                        {
+                                fit_content();
+                                fit_fontsize();
+                        });
+                        $(window).resize(function ()
+                        {
+                                fit_content();
+                                fit_fontsize();
+                        });
+  </script>
+</head>
+
+<body>
+
+<div id="header">
+<h1><a href="http://www.best-of-robotics.org"></a></h1>
+</div>
+
+<div id="navigation">
+<ul>
+  <li><a href="http://www.best-of-robotics.org/" class="inactive">BRICS -
+    Project web page</a></li>
+  <li><a href="bride" class="active">BRIDE Alpha Release</a> </li>
+  <li><a href="brocre" class="active">BROCRE Alpha Release</a> 
+    <ul>
+      <li><a href="brocre/installation.html">Installation</a></li>
+      <li><a href="brocre/usage.html">Usage</a></li>
+      <li><a href="brocre/contribute.html">Contribute to BROCRE</a></li>
+      <li><a href="brocre/troubleshoot.html">Troubleshoot</a></li>
+    </ul>
+  </li>
+  <!-- <li><a href="brics-in-a-nutshell" >BRICS in a nutshell</a></li>
+        <li><a href="consortium">Consortium</a></li>
+        <li><a href="research">Research</a></li>
+        <li><a href="showcases">Showcases</a></li>
+        <li><a href="BRICS-research-camps">BRICS Research Camps</a></li>
+        <li><a href="publications">Publications</a></li>
+        <li><a href="BRICS-news">BRICS News</a></li>
+        <li><a href="BRICS-events">BRICS Events</a></li>
+        <li><a href="related-activities">Related activities</a></li>
+        <li><a href="contact">Contact</a></li> -->
+</ul>
+</div>
+
+<div id="content">
+<h1>BROCRE Alpha Release</h1>
+
+<h3>Welcome to the BROCRE Alpha Release </h3>
+BROCRE is a software management system consisting of a repository and
+appropriate tools to browse and install BRICS software and resolve its
+dependencies. <br />
+<br />
+One of the core concepts of BROCRE is the  separation of software distribution
+and the software build process. This separation allows the user to modify the
+standard BROCRE process by its needs. For example in the research area it is 
+often the case that software is not released as a stable version, but source
+snapshots from a version control System (VCS) are used. Therefore a specific
+distribution machanism like SVN, git or Mercury is required. By the given
+separation the user can exchange the distribution mechanism and still keep the
+BROCRE package build system. 
+
+<p>BROCRE closes the gap between Advanced Packaging Tool (APT) from the debian
+community and the version control like git or svn. APT uses binaries which are
+platform specific and which have to be provided for each platform. In a version
+control system it is hard to tell which commit or part of the software is
+stable. In BROCRE source snapshots will be distributed which are classified as
+stable.<br />
+<br />
+BROCRE uses robotpkg to download archives and all there dependencies containing
+ROS stacks or packages. The BROCRE build system is based on rosmake to compile
+the downloaded archives and resolve build and system dependencies. </p>
+
+<h4>Subsections:</h4>
+<ul>
+  <li><a
+    href="http://www.best-of-robotics.org/brocre/installation.html">Installation</a></li>
+  <li><a href="http://www.best-of-robotics.org/brocre/usage.html">Usage</a></li>
+  <li><a href="brocre/contribute.html">Contribute to BROCRE</a></li>
+  <li><a
+    href="http://www.best-of-robotics.org/brocre/troubleshoot.html">Troubleshoot</a></li>
+</ul>
+</div>
+
+<div id="footer">
+</div>
+</body>
+</html>
