@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>BRICS - BROCRE Alpha Release - RTT</title>
+  <base  href="http://www.best-of-robotics.org/__baseuri" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+  </script>
+  <script type="text/javascript">
+			function real_width(element)
+			{
+				return element.width() + parseInt(element.css('paddingLeft')) + parseInt(element.css('paddingRight')) + parseInt(element.css('marginLeft')) + parseInt(element.css('marginRight'));
+			}
+			function real_height(element)
+			{
+				return element.height() + parseInt(element.css('paddingTop')) + parseInt(element.css('paddingBottom')) + parseInt(element.css('marginTop')) + parseInt(element.css('marginBottom'));
+			}
+			function fit_fontsize ()
+			{
+				if ($(window).width() > 800)
+					$('body').css('fontSize', "15px");
+				else if ($(window).width() > 600)
+					$('body').css('fontSize', "13px");
+				else if ($(window).width() > 400)
+					$('body').css('fontSize', "11px");
+				else if ($(window).width() > 300)
+					$('body').css('fontSize', "10px");
+				else if ($(window).width() > 200)
+					$('body').css('fontSize', "8px");
+			}
+			function fit_content ()
+			{
+				var w = $(document).width();
+				if (w > 1100) w = 1100;
+				$('#content').width(w - real_width($('#navigation')) - (parseInt($('#navigation').css('paddingLeft')) + parseInt($('#navigation').css('paddingRight')) + parseInt($('#navigation').css('marginLeft')) + parseInt($('#navigation').css('marginRight'))));
+			}
+			$(document).ready(function ()
+			{
+				fit_content();
+				fit_fontsize();
+			});
+			$(window).resize(function ()
+			{
+				fit_content();
+				fit_fontsize();
+			});
+		</script>
+</head>
+
+<body>
+
+<div id="header">
+<h1><a href="http://www.best-of-robotics.org"></a></h1>
+</div>
+
+<div id="navigation">
+<ul>
+  <li><a href="http://www.best-of-robotics.org/">BRICS - Project web
+  page</a></li>
+  <li><a href="bride" class="active">BRIDE Alpha Release</a> </li>
+  <li><a href="brocre" class="active">BROCRE Alpha Release</a> 
+    <ul>
+      <li><a href="brocre/installation.html">Installation</a></li>
+      <li><a href="brocre/usage.html">Usage</a></li>
+      <li><a href="brocre/contribute.html" class="active">Contribute to
+        BROCRE</a></li>
+      <li><a href="brocre/troubleshoot.html">Troubleshoot</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<div id="content">
+<h1>Contribute to BROCRE</h1>
+
+<p>If you want to contribute a software package to BROCRE please send an email
+to the BRSU group (jan.paulus / azamat.shakhimardanov / nico.hochgeschwender At
+h-brs.de) with the following information.</p>
+<ul>
+  <li>The name of the software package</li>
+  <li>Where to find the software</li>
+  <li>Which commit, tag or branch should be used</li>
+  <li>The categories which describes the software</li>
+  <li>The dependencies to other BROCRE packages</li>
+  <li>The version of the software *</li>
+  <li>The maintainer of the software *</li>
+  <li>The homepage of the software *</li>
+  <li>The license *</li>
+  <li>A brief description in one line *</li>
+  <li>A long description *</li>
+</ul>
+
+<p>If the software needs to compile it should be compiled with rosmake. When
+the software is a ROS package or a stack it is sufficed to provide the
+information which are marked with a star (*) in the ROS manifest.xml or
+stack.xml.</p>
+
+<p></p>
+</div>
+</body>
+</html>

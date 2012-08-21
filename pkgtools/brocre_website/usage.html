@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>BRICS - BROCRE Alpha Release - RTT</title>
+  <base  href="http://www.best-of-robotics.org/__baseuri" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+  </script>
+  <script type="text/javascript">
+			function real_width(element)
+			{
+				return element.width() + parseInt(element.css('paddingLeft')) + parseInt(element.css('paddingRight')) + parseInt(element.css('marginLeft')) + parseInt(element.css('marginRight'));
+			}
+			function real_height(element)
+			{
+				return element.height() + parseInt(element.css('paddingTop')) + parseInt(element.css('paddingBottom')) + parseInt(element.css('marginTop')) + parseInt(element.css('marginBottom'));
+			}
+			function fit_fontsize ()
+			{
+				if ($(window).width() > 800)
+					$('body').css('fontSize', "15px");
+				else if ($(window).width() > 600)
+					$('body').css('fontSize', "13px");
+				else if ($(window).width() > 400)
+					$('body').css('fontSize', "11px");
+				else if ($(window).width() > 300)
+					$('body').css('fontSize', "10px");
+				else if ($(window).width() > 200)
+					$('body').css('fontSize', "8px");
+			}
+			function fit_content ()
+			{
+				var w = $(document).width();
+				if (w > 1100) w = 1100;
+				$('#content').width(w - real_width($('#navigation')) - (parseInt($('#navigation').css('paddingLeft')) + parseInt($('#navigation').css('paddingRight')) + parseInt($('#navigation').css('marginLeft')) + parseInt($('#navigation').css('marginRight'))));
+			}
+			$(document).ready(function ()
+			{
+				fit_content();
+				fit_fontsize();
+			});
+			$(window).resize(function ()
+			{
+				fit_content();
+				fit_fontsize();
+			});
+		</script>
+</head>
+
+<body>
+
+<div id="header">
+<h1><a href="http://www.best-of-robotics.org"></a></h1>
+</div>
+
+<div id="navigation">
+<ul>
+  <li><a href="http://www.best-of-robotics.org/">BRICS - Project web
+  page</a></li>
+  <li><a href="bride" class="active">BRIDE Alpha Release</a> </li>
+  <li><a href="brocre" class="active">BROCRE Alpha Release</a> 
+    <ul>
+      <li><a href="brocre/installation.html">Installation</a></li>
+      <li><a href="brocre/usage.html" class="active">Usage</a></li>
+      <li><a href="brocre/contribute.html">Contribute to BROCRE</a></li>
+      <li><a href="brocre/troubleshoot.html">Troubleshoot</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<div id="content">
+<h1>Usage</h1>
+BROCRE software can be downloaded either via commandline tools or a GUI. The
+buildsystem is currently commandline only. 
+
+<h3>Commandline</h3>
+
+<h4>Install packages</h4>
+
+<p>The folders in the brocre folder are software stacks. To install a software
+stack please go into the folder and type “make update”. <br />
+<br />
+<code>cd hardware/youbot-driver/</code> <br />
+<br />
+<code>make update</code> <br />
+<br />
+The software will be installed into the ~/brics_sofware folder. To compile the
+software please use rosmake. <br />
+<br />
+<code>rosmake youbot_driver</code> </p>
+
+<h4>Check installed packages</h4>
+
+<p>To check which software is installed type:</p>
+
+<p><code>robotpkg_info</code></p>
+
+<h4>Uninstall packages</h4>
+
+<p>To uninstall software please use the command robotpkg_delete. For instance
+like this:</p>
+
+<p><code>robotpkg_delete youbot_driver-0.9</code></p>
+
+<h3>GUI</h3>
+
+<p>You can start the GUI with the following commands : <br />
+<br />
+<code>cd brocre/pkgtools/brocre_tools/</code> <br />
+<br />
+<code>python brocre_package_install_gui.py</code> <br />
+<br />
+After starting the GUI you should see a screen similar as in the picture below: 
+<p><img src="brocre/img/startup_gui.gif" width="504" height="327"
+alt="Startup_GUI" /></p>
+The categories check boxes allow you to filter available BROCRE packages. If
+you select a package, its details will be shown in the right text box and you
+are able to install or uninstall the package. With the Update BROCRE button it
+is possible to pull the newest package descriptions form the git repository.
+<br />
+<br />
+The software will be installed into the ~/brics_sofware folder. To compile the
+software please use rosmake as described in the "Commandline usage" section </p>
+
+<h3>Use a model which is installed by BROCRE in BRIDE</h3>
+<ol>
+  <li>Open BRIDE</li>
+  <li>From the main menu bar, select <strong>File</strong> &gt;
+    <strong>Import...</strong>. The Import wizard opens.</li>
+  <li>Select <strong>General</strong> &gt; <strong>Existing Project into
+    Workspace</strong> and click Next.</li>
+  <li>Next to <strong>select root directory</strong> and click Browse. Browse
+    to the ~/brics_sofware/model folder.</li>
+  <li>Under Projects select the project or projects which you would like to
+    import.<br />
+    (do not select <strong>Copy projects into workspace</strong>) </li>
+  <li>Click Finish to start the import.</li>
+</ol>
+
+<p></p>
+
+<p></p>
+</div>
+</body>
+</html>

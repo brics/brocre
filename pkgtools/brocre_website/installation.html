@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>BRICS - BROCRE Alpha Release - Installation</title>
+  <base  href="http://www.best-of-robotics.org/__baseuri" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+  </script>
+  <script type="text/javascript">
+			function real_width(element)
+			{
+				return element.width() + parseInt(element.css('paddingLeft')) + parseInt(element.css('paddingRight')) + parseInt(element.css('marginLeft')) + parseInt(element.css('marginRight'));
+			}
+			function real_height(element)
+			{
+				return element.height() + parseInt(element.css('paddingTop')) + parseInt(element.css('paddingBottom')) + parseInt(element.css('marginTop')) + parseInt(element.css('marginBottom'));
+			}
+			function fit_fontsize ()
+			{
+				if ($(window).width() > 800)
+					$('body').css('fontSize', "15px");
+				else if ($(window).width() > 600)
+					$('body').css('fontSize', "13px");
+				else if ($(window).width() > 400)
+					$('body').css('fontSize', "11px");
+				else if ($(window).width() > 300)
+					$('body').css('fontSize', "10px");
+				else if ($(window).width() > 200)
+					$('body').css('fontSize', "8px");
+			}
+			function fit_content ()
+			{
+				var w = $(document).width();
+				if (w > 1100) w = 1100;
+				$('#content').width(w - real_width($('#navigation')) - (parseInt($('#navigation').css('paddingLeft')) + parseInt($('#navigation').css('paddingRight')) + parseInt($('#navigation').css('marginLeft')) + parseInt($('#navigation').css('marginRight'))));
+			}
+			$(document).ready(function ()
+			{
+				fit_content();
+				fit_fontsize();
+			});
+			$(window).resize(function ()
+			{
+				fit_content();
+				fit_fontsize();
+			});
+		</script>
+</head>
+
+<body>
+
+<div id="header">
+<h1><a href="http://www.best-of-robotics.org"></a></h1>
+</div>
+
+<div id="navigation">
+<ul>
+  <li><a href="http://www.best-of-robotics.org/" class="inactive">BRICS -
+    Project web page</a></li>
+  <li><a href="bride" class="active">BRIDE Alpha Release</a> </li>
+  <li><a href="brocre" class="active">BROCRE Alpha Release</a> 
+    <ul>
+      <li><a href="brocre/installation.html"
+      class="active">Installation</a></li>
+      <li><a href="brocre/usage.html">Usage</a></li>
+      <li><a href="brocre/contribute.html">Contribute to BROCRE</a></li>
+      <li><a href="brocre/troubleshoot.html">Troubleshoot</a></li>
+    </ul>
+  </li>
+</ul>
+</div>
+
+<div id="content">
+<h1>Installation</h1>
+
+<h2>Requirements</h2>
+<ol>
+  <li>BROCRE requires a Linux installation. It has been tested with Ubuntu.</li>
+  <li><p>You need to install the following packages before installing
+    BROCRE:</p>
+    <ul>
+      <li>gnu-make software </li>
+      <li>git - version control system </li>
+      <li>pax - portable archive interchange</li>
+      <li>bzip2 - block-sorting file compressor library</li>
+      <li>python - python interpreter</li>
+    </ul>
+    <p>For ubuntu type:</p>
+    <p><code><code>sudo apt-get install build-essential cmake git-core pax
+    libbz2-dev python</code> python-tk</code></p>
+  </li>
+  <li><p>ROS build system</p>
+    <p>You need the ROS build system to compile the software. Other ROS
+    packages beside the build system are not required. If you do not have ROS
+    installed please install the ROS-Base (Bare Bones) package. <a
+    href="http://www.ros.org/wiki/electric/Installation">ROS install
+    documentation</a></p>
+    <p><br />
+    </p>
+  </li>
+</ol>
+
+<h3>Installing and configuring BROCRE</h3>
+
+<p>You need to clone the BROCRE github repository.</p>
+
+<p><code>git clone https://github.com/janpaulus/brocre.git</code></p>
+
+<p>This repository contains package descriptions of the software available in
+BROCRE and tools for BROCRE like its GUI's. It will be located in
+"./brocre".</p>
+
+<p>BROCRE is a living thing, and updates to the packages are made periodically.
+In order to get the most recent packages, you should keep your BROCRE copy
+up-to-date by regularly running "git pull" in the ./brocre folder or pressing
+the <em>Update BROCRE</em> button in the GUI.</p>
+
+<p>After the repository is cloned, BROCRE needs to be bootstrapped. In this
+process the BROCRE binaries are installed and a folder is created where the
+binaries of BROCRE and BROCRE installed software will be located. For that
+purpose a bootstrap script is provided. It takes the --prefix option to specify
+the target directory. For instance, installing the packages in your home
+directory can be configured like this:</p>
+
+<p><code>cd brocre/bootstrap</code></p>
+
+<p><code>./bootstrap --prefix=${HOME}/brics_software</code></p>
+
+<p>Further, a set of environment variables needs to be specified </p>
+
+<p>Specifiy where the BROCRE installed software is located: </p>
+
+<p><code>echo "export ROBOTPKG_BASE=$HOME/brics_software" &gt;&gt;
+~/.bashrc</code></p>
+
+<p>Make the BROCRE binaries system wide available (e.g. you can use the
+robotpkg_info command from any folder):</p>
+
+<p><code>echo "export PATH=\$PATH:$HOME/brics_software/sbin" &gt;&gt;
+~/.bashrc</code></p>
+
+<p>Make the BROCRE downloaded packages known to the ROS build system:</p>
+
+<p><code>echo "export ROS_PACKAGE_PATH=\$ROS_PACKAGE_PATH:\$ROBOTPKG_BASE"
+&gt;&gt; ~/.bashrc</code></p>
+
+<p><code>source ~/.bashrc</code></p>
+</div>
+
+<div id="footer">
+</div>
+</body>
+</html>

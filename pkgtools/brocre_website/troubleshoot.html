@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en"><head>
+
+
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /><title>BRICS - BROCRE Alpha Release</title>
+  
+  <base href="http://www.best-of-robotics.org/__baseuri" />
+  <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js">
+  </script>
+  <script type="text/javascript">
+                        function real_width(element)
+                        {
+                                return element.width() + parseInt(element.css('paddingLeft')) + parseInt(element.css('paddingRight')) + parseInt(element.css('marginLeft')) + parseInt(element.css('marginRight'));
+                        }
+                        function real_height(element)
+                        {
+                                return element.height() + parseInt(element.css('paddingTop')) + parseInt(element.css('paddingBottom')) + parseInt(element.css('marginTop')) + parseInt(element.css('marginBottom'));
+                        }
+                        function fit_fontsize ()
+                        {
+                                if ($(window).width() > 800)
+                                        $('body').css('fontSize', "15px");
+                                else if ($(window).width() > 600)
+                                        $('body').css('fontSize', "13px");
+                                else if ($(window).width() > 400)
+                                        $('body').css('fontSize', "11px");
+                                else if ($(window).width() > 300)
+                                        $('body').css('fontSize', "10px");
+                                else if ($(window).width() > 200)
+                                        $('body').css('fontSize', "8px");
+                        }
+                        function fit_content ()
+                        {
+                                var w = $(document).width();
+                                if (w > 1100) w = 1100;
+                                $('#content').width(w - real_width($('#navigation')) - (parseInt($('#navigation').css('paddingLeft')) + parseInt($('#navigation').css('paddingRight')) + parseInt($('#navigation').css('marginLeft')) + parseInt($('#navigation').css('marginRight'))));
+                        }
+                        $(document).ready(function ()
+                        {
+                                fit_content();
+                                fit_fontsize();
+                        });
+                        $(window).resize(function ()
+                        {
+                                fit_content();
+                                fit_fontsize();
+                        });
+  </script></head><body>
+
+<div id="header">
+<h1><a href="http://www.best-of-robotics.org" /></h1>
+</div>
+
+<div id="navigation">
+<ul>
+  <li><a href="http://www.best-of-robotics.org/" class="inactive">BRICS -
+    Project web page</a></li>
+  <li><a href="bride" class="active">BRIDE Alpha Release</a> </li>
+  <li><a href="brocre" class="active">BROCRE Alpha Release</a> 
+    <ul>
+      <li><a href="brocre/installation.html">Installation</a></li>
+      <li><a href="brocre/usage.html">Usage</a></li>
+      <li><a href="brocre/contribute.html">Contribute to BROCRE</a></li>
+      <li><a href="brocre/troubleshoot.html" class="active">Troubleshoot</a></li>
+    </ul>
+  </li>
+  <!-- <li><a href="brics-in-a-nutshell" >BRICS in a nutshell</a></li>
+      <li><a href="consortium">Consortium</a></li>
+      <li><a href="research">Research</a></li>
+      <li><a href="showcases">Showcases</a></li>
+      <li><a href="BRICS-research-camps">BRICS Research Camps</a></li>
+      <li><a href="publications">Publications</a></li>
+      <li><a href="BRICS-news">BRICS News</a></li>
+      <li><a href="BRICS-events">BRICS Events</a></li>
+      <li><a href="related-activities">Related activities</a></li>
+      <li><a href="contact">Contact</a></li> -->
+</ul>
+</div>
+
+<div id="content" align="justify">
+<h1>Troubleshoot</h1>
+
+<h3> GUI </h3>
+<h4>Q: After installing a package with the GUI, the package isn't marked as installed ('green' coloured) in the packages list. </h4>
+A: Check if you have configured the environment variables correctly. ROBOTPKG_BASE variable needs to specify the target directory of your installed software and the PATH needs to contain the $ROBOTPKG_BASE/sbin folder.
+<h4>Q: Executing rosmake in an installed packages folder returns an error.</h4>
+A: Check that your ROS_PACKAGE_PATH contains the folder where your packages are installed.
+
+
+
+</div>
+
+
+<div id="footer">
+</div>
+</body></html>
