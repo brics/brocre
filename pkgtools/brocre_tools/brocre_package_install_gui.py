@@ -76,6 +76,7 @@ def executeCommand(exe):
     listbox.config(state=DISABLED)
     buttonInstall.config(state=DISABLED)
     buttonUninstall.config(state=DISABLED)
+    buttonDownload.config(state=DISABLED)
     buttonupdateBROCRE.config(state=DISABLED)
 
     data = runProcess(exe) 
@@ -108,6 +109,27 @@ def updateAllPackageDescriptions():
     allPackages = extractPackageDescriptions()
     selectCategorieEvent()
     updateCurrentPackageDescription()
+
+def downloadbutton():
+    #Show Error if values are not entered
+    error = ""
+    toInstalledPackage = []
+    
+    if len(listbox.curselection()) == 0:
+        error = "No package is selected!"
+    else:        
+        currentPackage = packageDescription()
+        for package in allPackages:
+            if package.name ==listbox.get(listbox.curselection()):
+                currentPackage = package
+    
+    
+    if not error == "":
+        tkMessageBox.showerror(message=error)
+    else:
+        command = ['make', '-C', ROBOT_PACKAGE_PATH + currentPackage.folder +"/" +  currentPackage.name, 'fetch']
+        t = Thread(target=executeCommand, args=(command,))
+        t.start()
 
 
 def installbutton():
@@ -256,10 +278,12 @@ def updateCurrentPackageDescription():
         
         if currentPackage.installedVersion == "":
             buttonInstall.config(state=NORMAL)
+            buttonDownload.config(state=NORMAL)
             buttonUninstall.config(state=DISABLED)
         else:
             buttonUninstall.config(state=NORMAL)
             buttonInstall.config(state=DISABLED)
+            buttonDownload.config(state=NORMAL)
             
         
         
@@ -268,6 +292,7 @@ def updateCurrentPackageDescription():
         textField.delete(1.0, END)
         textField.config(state=DISABLED)
         buttonInstall.config(state=DISABLED)
+        buttonDownload.config(state=DISABLED)
         buttonUninstall.config(state=DISABLED)
         
 
@@ -352,13 +377,16 @@ if __name__ == "__main__":
     buttonInstall.grid( row=1,column=0,rowspan=2, sticky=W)
     buttonUninstall = Button(descriptionFrame, text="Uninstall", command=uninstallbutton)
     buttonUninstall.grid( row=1,column=0, sticky=N)
+    buttonDownload = Button(descriptionFrame, text="Download", command=downloadbutton)
+    buttonDownload.grid( row=1,column=0, sticky=E)
    # buttonCompile = Button(root, text="Compile", command=compilebutton)
    # buttonCompile.grid()
-    buttonupdateBROCRE = Button(descriptionFrame, text="Update BROCRE", command=updateBROCREbutton)
-    buttonupdateBROCRE.grid( row=1,column=0, sticky=E)
+    buttonupdateBROCRE = Button(root, text="Update BROCRE", command=updateBROCREbutton)
+    buttonupdateBROCRE.grid( row=1,column=2, sticky=E)
     
     buttonInstall.config(state=DISABLED)
     buttonUninstall.config(state=DISABLED)
+    buttonDownload.config(state=DISABLED)
     
     
     # Console Frame
