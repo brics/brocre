@@ -1,8 +1,8 @@
-# generated on 2012-02-10
+# generated on 2012-10-16
 
 PACKAGE_VERSION = 0.1
-DISTNAME = brics-mm-${PACKAGE_VERSION}
-PKGNAME = brics-mm-${PACKAGE_VERSION}
+DISTNAME = brics_mm-${PACKAGE_VERSION}
+PKGNAME = brics_mm-${PACKAGE_VERSION}
 CATEGORIES = algorithm
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 

@@ -5,6 +5,6 @@ COMMENT=	Algorithm
 
 SUBDIR+=  artoolkitplusstack
 SUBDIR+=	brics_3d
-SUBDIR+=	brics-mm
+SUBDIR+=	brics_mm
 
 include ../mk/robotpkg.subdir.mk
