@@ -1,6 +1,6 @@
-# generated on 2012-06-18
+# generated on 2012-10-17
 
-PACKAGE_VERSION = 0.2.0
+PACKAGE_VERSION = 0.3.0
 DISTNAME = brics_3d-${PACKAGE_VERSION}
 PKGNAME = brics_3d-${PACKAGE_VERSION}
 CATEGORIES = algorithm perception
