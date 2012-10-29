@@ -1,14 +1,14 @@
-# generated on 2012-06-08
+# generated on 2012-10-29
 
-PACKAGE_VERSION = 0.1
+PACKAGE_VERSION = 0.2
 DISTNAME = b-it-bots_youbot-manipulation-${PACKAGE_VERSION}
 PKGNAME = b-it-bots_youbot-manipulation-${PACKAGE_VERSION}
-CATEGORIES = youbot
+CATEGORIES = hardware youbot
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Sven Schneider
-HOMEPAGE = https://github.com/b-it-bots/youbot-manipulation
+HOMEPAGE = http://ros.org/wiki/youbot-manipulation
 COMMENT = youbot-manipulation
 LICENSE = gnu-lgpl-v2.1 modified-bsd
 

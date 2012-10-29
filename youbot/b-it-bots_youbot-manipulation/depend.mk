@@ -10,7 +10,7 @@ PREFER.b-it-bots_youbot-manipulation?=    robotpkg
 
 DEPEND_USE+=        b-it-bots_youbot-manipulation
 
-DEPEND_ABI.b-it-bots_youbot-manipulation?=    b-it-bots_youbot-manipulation>=0.1
+DEPEND_ABI.b-it-bots_youbot-manipulation?=    b-it-bots_youbot-manipulation>=0.2
 DEPEND_DIR.b-it-bots_youbot-manipulation?=    ../../youbot/b-it-bots_youbot-manipulation
 
 SYSTEM_SEARCH.b-it-bots_youbot-manipulation=youbot/b-it-bots_youbot-manipulation/stack.xml
