@@ -6,6 +6,8 @@ wip/
 INDEX
 index.html
 index-all.html
+brocre.conf
+*.pyc
 
 work/
 work.*/

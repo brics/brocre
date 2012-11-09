@@ -5,7 +5,6 @@ from Tkinter import *
 import webbrowser
 import os
 import tkMessageBox
-import commands
 from threading import Thread
 import tkFileDialog
 
@@ -24,10 +23,12 @@ global textField
 global consoleOutput
 global buttonInstall
 global buttonUninstall
+global INSTALL_PATH
 
 allPackages = []
 MAKEFILE_NAME = "Makefile"
 ROBOT_PACKAGE_PATH = "./"
+INSTALL_PATH = ""
 
 
 class DeletePackageDialog(tkSimpleDialog.Dialog):
@@ -54,22 +55,37 @@ class DeletePackageDialog(tkSimpleDialog.Dialog):
         self.isOKpressed = True
         
 def checkIfBROCREisBootstraped(window):
-  if("ROBOTPKG_BASE" in os.environ):
-    print "BROCRE is installed"
+  BROCRE_IS_INSTALLED = False
+  try:
+    brocreconf = open('./brocre.conf','r')
+    for line in  brocreconf:
+      if "ROBOTPKG_BASE=" in line:
+        global INSTALL_PATH
+        INSTALL_PATH = line.replace("ROBOTPKG_BASE=",'')
+          
+    os.environ["ROBOTPKG_BASE"]=INSTALL_PATH
+    if (os.path.isfile(INSTALL_PATH+"/sbin/robotpkg_info")):   
+      BROCRE_IS_INSTALLED = True;
+  except IOError as e:
+    print 'BROCRE is NOT installed'
+    
+    
+  if(BROCRE_IS_INSTALLED):
+    updateAllPackageDescriptions()
+    
   else:
     if( tkMessageBox.askokcancel("BROCRE installation", "BROCRE is NOT installed yet!\nDo you want to install it now?") == 1):
-        dirname = tkFileDialog.askdirectory(initialdir="~/",title='Please select a directory')
-        if(dirname == ""):
+        INSTALL_PATH = tkFileDialog.askdirectory(initialdir="~/",title='Please select a directory')
+        if(INSTALL_PATH == ""):
           exit() 
-        if( tkMessageBox.askokcancel("BROCRE installation", "The ROBOTPKG_BASE, ROS_PACKAGE_PATH and PATH env variable have to be modified.\nShould they be modiefed now?") == 1):
-          homedir = os.path.expanduser("~")
-          bashrc = open(homedir+"/.bashrc", 'a')
-          bashrc.write("\nexport ROBOTPKG_BASE="+dirname)
-          bashrc.write("\nexport PATH=$PATH:"+dirname+"/sbin")
-          bashrc.write("\nexport ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$ROBOTPKG_BASE")
-        command = ["./bootstrap/bootstrap","--prefix="+dirname]
-        t = Thread(target=executeCommandBootstrap, args=(command,))
-        t.start()      
+    
+        brocreconf = open("./brocre.conf", 'w')
+        brocreconf.write("ROBOTPKG_BASE="+INSTALL_PATH)
+        os.environ["ROBOTPKG_BASE"]=INSTALL_PATH
+        command = ["./bootstrap/bootstrap","--prefix="+INSTALL_PATH]
+        t = Thread(target=executeCommandWithMessage, args=(command,"BROCRE installation","Add the "+INSTALL_PATH+" path to the ROS_PACKAGE_PATH.\nIn order to compile the packages."))
+        t.start()
+        updateAllPackageDescriptions()
     else: 
       exit()
     
@@ -124,14 +140,13 @@ def executeCommandWithRestart(exe):
     python = sys.executable
     os.execl(python, python, * sys.argv)
     
-def executeCommandBootstrap(exe):
+def executeCommandWithMessage(exe,titel, message):
     executeCommand(exe)
-    tkMessageBox.showinfo("BROCRE installation","Please source your .bashrc and restart BROCRE.")
-    exit()
+    tkMessageBox.showinfo(titel,message)
 
 def updateAllPackageDescriptions():
     global allPackages
-    allPackages = extractPackageDescriptions()
+    allPackages = extractPackageDescriptions(INSTALL_PATH)
     selectCategorieEvent()
     updateCurrentPackageDescription()
 
@@ -200,13 +215,13 @@ def uninstallbutton():
         if(deleteDialogRoot.isOKpressed):
             printIntoConsoleBox("Uninstalling ...")
             if(deleteDialogRoot.deleteCheckbuttonState.get() == 1):
-                command = ["robotpkg_delete", currentPackage.name]
+                command = [INSTALL_PATH+"/sbin/robotpkg_delete", currentPackage.name]
                 packagePath = os.environ['ROBOTPKG_BASE'] +"/"+ currentPackage.folder+"/"+currentPackage.name
                 command2 = ["rm","-r", packagePath]
                 t = Thread(target=executeTwoCommandSequential, args=(command,command2,))
                 t.start()
             else:
-                command = ["robotpkg_delete", currentPackage.name]
+                command = [INSTALL_PATH+"/sbin/robotpkg_delete", currentPackage.name]
                 t = Thread(target=executeCommand, args=(command,))
                 t.start()
 
@@ -328,7 +343,7 @@ if __name__ == "__main__":
     root = Tk()
     root.title("BROCRE Package Installer")
           
-    allPackages = extractPackageDescriptions()
+    allPackages = extractPackageDescriptions(INSTALL_PATH)
         
     allCategories = list()
     for package in allPackages:

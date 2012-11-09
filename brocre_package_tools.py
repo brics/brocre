@@ -56,7 +56,7 @@ def parsePKGMakefile(filename,currentpackage):
     #filehandle.close()
 
 
-def extractPackageDescriptions():
+def extractPackageDescriptions(ROBOTPKG_BASE):
     # Parse Makefile which contains Package Description folders
     MAKEFILE_NAME = "Makefile"
     ROBOT_PACKAGE_PATH = "./"
@@ -80,12 +80,12 @@ def extractPackageDescriptions():
             DESCRfile.close()
             currentpackage.name = package
             currentpackage.folder = folder
-            robotpkgInfoText = commands.getoutput("robotpkg_info -e "+currentpackage.name)
+            robotpkgInfoText = commands.getoutput(ROBOTPKG_BASE+"/sbin/robotpkg_info -e "+currentpackage.name)
             compareInstalledVersionWithCurrentPackageVersion(robotpkgInfoText,currentpackage)
             allPackages.append(currentpackage)
     
     #check for packages which have been install but the package has been removed from brocre
-    robotpkgInfoText = commands.getoutput("robotpkg_info -u")
+    robotpkgInfoText = commands.getoutput(ROBOTPKG_BASE+"/sbin/robotpkg_info -u")
     robotpkgInfoText = robotpkgInfoText.split("\n")
     for line in robotpkgInfoText:
         packageDescriptionAvailable = False
