@@ -7,6 +7,7 @@ import os
 import tkMessageBox
 import commands
 from threading import Thread
+import tkFileDialog
 
 import operator
 import subprocess
@@ -26,7 +27,7 @@ global buttonUninstall
 
 allPackages = []
 MAKEFILE_NAME = "Makefile"
-ROBOT_PACKAGE_PATH = "../../"
+ROBOT_PACKAGE_PATH = "./"
 
 
 class DeletePackageDialog(tkSimpleDialog.Dialog):
@@ -52,6 +53,26 @@ class DeletePackageDialog(tkSimpleDialog.Dialog):
     def apply(self):
         self.isOKpressed = True
         
+def checkIfBROCREisBootstraped(window):
+  if("ROBOTPKG_BASE" in os.environ):
+    print "BROCRE is installed"
+  else:
+    if( tkMessageBox.askokcancel("BROCRE installation", "BROCRE is NOT installed yet!\nDo you want to install it now?") == 1):
+        dirname = tkFileDialog.askdirectory(initialdir="~/",title='Please select a directory')
+        if(dirname == ""):
+          exit() 
+        if( tkMessageBox.askokcancel("BROCRE installation", "The ROBOTPKG_BASE, ROS_PACKAGE_PATH and PATH env variable have to be modified.\nShould they be modiefed now?") == 1):
+          homedir = os.path.expanduser("~")
+          bashrc = open(homedir+"/.bashrc", 'a')
+          bashrc.write("\nexport ROBOTPKG_BASE="+dirname)
+          bashrc.write("\nexport PATH=$PATH:"+dirname+"/sbin")
+          bashrc.write("\nexport ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$ROBOTPKG_BASE")
+        command = ["./bootstrap/bootstrap","--prefix="+dirname]
+        t = Thread(target=executeCommandBootstrap, args=(command,))
+        t.start()      
+    else: 
+      exit()
+    
 
 def runProcess(exe):  
     p = subprocess.Popen(exe, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
@@ -102,7 +123,11 @@ def executeCommandWithRestart(exe):
     executeCommand(exe)
     python = sys.executable
     os.execl(python, python, * sys.argv)
-
+    
+def executeCommandBootstrap(exe):
+    executeCommand(exe)
+    tkMessageBox.showinfo("BROCRE installation","Please source your .bashrc and restart BROCRE.")
+    exit()
 
 def updateAllPackageDescriptions():
     global allPackages
@@ -426,5 +451,6 @@ if __name__ == "__main__":
     
     selectCategorieEvent()
 
+    checkIfBROCREisBootstraped(root)
 
     root.mainloop()

@@ -59,7 +59,7 @@ def parsePKGMakefile(filename,currentpackage):
 def extractPackageDescriptions():
     # Parse Makefile which contains Package Description folders
     MAKEFILE_NAME = "Makefile"
-    ROBOT_PACKAGE_PATH = "../../"
+    ROBOT_PACKAGE_PATH = "./"
     
     packageDescriptionFolders = extractPackagesFromRobotPKGMakefile(ROBOT_PACKAGE_PATH + MAKEFILE_NAME)
 
