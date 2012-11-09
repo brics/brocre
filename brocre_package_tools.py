@@ -85,22 +85,23 @@ def extractPackageDescriptions(ROBOTPKG_BASE):
             allPackages.append(currentpackage)
     
     #check for packages which have been install but the package has been removed from brocre
-    robotpkgInfoText = commands.getoutput(ROBOTPKG_BASE+"/sbin/robotpkg_info -u")
-    robotpkgInfoText = robotpkgInfoText.split("\n")
-    for line in robotpkgInfoText:
-        packageDescriptionAvailable = False
-        for package in allPackages:
-            if package.name in line:
-                packageDescriptionAvailable = True
-        if line == "":
-            packageDescriptionAvailable = True
-        if packageDescriptionAvailable == False:
-          newpackage = packageDescription()
-          newpackage.name = line.split(" ")[0]
-          newpackage.categories = ["unknown"]    
-          newpackage.installedVersion = "-"
-          newpackage.version = "-"
-          allPackages.append(newpackage)
+    if (os.path.isfile(ROBOTPKG_BASE+"/sbin/robotpkg_info")):
+      robotpkgInfoText = commands.getoutput(ROBOTPKG_BASE+"/sbin/robotpkg_info -u")
+      robotpkgInfoText = robotpkgInfoText.split("\n")
+      for line in robotpkgInfoText:
+          packageDescriptionAvailable = False
+          for package in allPackages:
+              if package.name in line:
+                  packageDescriptionAvailable = True
+          if line == "" or "pkg_install" in line:
+              packageDescriptionAvailable = True
+          if packageDescriptionAvailable == False:
+            newpackage = packageDescription()
+            newpackage.name = line.split(" ")[0]
+            newpackage.categories = ["unknown"]    
+            newpackage.installedVersion = "-"
+            newpackage.version = "-"
+            allPackages.append(newpackage)
             
     return allPackages
             
