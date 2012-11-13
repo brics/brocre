@@ -83,11 +83,21 @@ def checkIfBROCREisBootstraped(window):
         brocreconf.write("ROBOTPKG_BASE="+INSTALL_PATH)
         os.environ["ROBOTPKG_BASE"]=INSTALL_PATH
         command = ["./bootstrap/bootstrap","--prefix="+INSTALL_PATH]
-        t = Thread(target=executeCommandWithMessage, args=(command,"BROCRE installation","Add the "+INSTALL_PATH+" path to the ROS_PACKAGE_PATH.\nIn order to compile the packages."))
+        t = Thread(target=executeCommandWithFunction, args=(command,updateBashrc))
         t.start()
         updateAllPackageDescriptions()
     else: 
       exit()
+      
+def updateBashrc():
+    if( tkMessageBox.askokcancel("BROCRE installation","Do you want to add the\n"+INSTALL_PATH+"\npath to the ROS_PACKAGE_PATH?\n") == 1):
+      bashrc = open(os.environ["HOME"]+"/.bashrc", 'a')
+      bashrc.write("export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:"+INSTALL_PATH)
+      printIntoConsoleBox("Add the "+INSTALL_PATH+" path to the ROS_PACKAGE_PATH.")
+      
+    printIntoConsoleBox("\n\nInstallation is finished")
+      
+      
     
 
 def runProcess(exe):  
@@ -140,9 +150,9 @@ def executeCommandWithRestart(exe):
     python = sys.executable
     os.execl(python, python, * sys.argv)
     
-def executeCommandWithMessage(exe,titel, message):
+def executeCommandWithFunction(exe,function):
     executeCommand(exe)
-    tkMessageBox.showinfo(titel,message)
+    function()
 
 def updateAllPackageDescriptions():
     global allPackages
