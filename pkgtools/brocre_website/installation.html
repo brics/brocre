@@ -90,7 +90,7 @@
     </ul>
     <p>For ubuntu type:</p>
     <p><code><code>sudo apt-get install build-essential cmake git-core pax
-    libbz2-dev python</code> python-tk</code></p>
+    libbz2-dev python</code> python-tk zlib1g-dev libncurses-dev</code></p>
   </li>
   <li><p>ROS build system</p>
     <p>You need the ROS build system to compile the software. Other ROS
@@ -120,10 +120,25 @@ the <em>Update BROCRE</em> button in the GUI.</p>
 
 <p>After the repository is cloned, BROCRE needs to be bootstrapped. In this
 process the BROCRE binaries are installed and a folder is created where the
-binaries of BROCRE and BROCRE installed software will be located. For that
-purpose a bootstrap script is provided. It takes the --prefix option to specify
-the target directory. For instance, installing the packages in your home
-directory can be configured like this:</p>
+binaries of BROCRE and BROCRE installed software will be located. </p>
+
+<h4>Installation with the GUI</h4>
+
+<p>When starting the GUI for the first time it will ask you to install BROCRE.
+After you have selected a folder where the packages should be installed, the
+GUI will automatically bootstrap BROCRE.</p>
+
+<p><code>cd brocre/</code></p>
+
+<p><code>./package_installer.py </code></p>
+
+<p></p>
+
+<h4>Installation from command line</h4>
+
+<p>For that purpose a bootstrap script is provided. It takes the --prefix
+option to specify the target directory. For instance, installing the packages
+in your home directory can be configured like this:</p>
 
 <p><code>cd brocre/bootstrap</code></p>
 
