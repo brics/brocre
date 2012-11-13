@@ -82,6 +82,26 @@ BROCRE to download the packages.</p>
 <p>BROCRE software can be downloaded either via commandline tools or a GUI. The
 buildsystem is currently commandline only. </p>
 
+<h3>GUI</h3>
+
+<p>You can start the GUI with the following commands : <br />
+<br />
+<code>cd brocre/</code> <br />
+<br />
+<code>./package_installer.py</code> <br />
+<br />
+After starting the GUI you should see a screen similar as in the picture below: 
+<p><img src="brocre/img/startup_gui.gif" width="504" height="327"
+alt="Startup_GUI" /></p>
+The categories check boxes allow you to filter available BROCRE packages. If
+you select a package, its details will be shown in the right text box and you
+are able to install or uninstall the package. With the Update BROCRE button it
+is possible to pull the newest package descriptions form the git repository.
+<br />
+<br />
+The software will be installed into the ~/brics_sofware folder. To compile the
+software please use rosmake as described in the "Commandline usage" section </p>
+
 <h3>Commandline</h3>
 
 <h4>Install packages</h4>
@@ -111,25 +131,7 @@ like this:</p>
 
 <p><code>robotpkg_delete youbot_driver-0.9</code></p>
 
-<h3>GUI</h3>
 
-<p>You can start the GUI with the following commands : <br />
-<br />
-<code>cd brocre/</code> <br />
-<br />
-<code>./package_installer.py</code> <br />
-<br />
-After starting the GUI you should see a screen similar as in the picture below: 
-<p><img src="brocre/img/startup_gui.gif" width="504" height="327"
-alt="Startup_GUI" /></p>
-The categories check boxes allow you to filter available BROCRE packages. If
-you select a package, its details will be shown in the right text box and you
-are able to install or uninstall the package. With the Update BROCRE button it
-is possible to pull the newest package descriptions form the git repository.
-<br />
-<br />
-The software will be installed into the ~/brics_sofware folder. To compile the
-software please use rosmake as described in the "Commandline usage" section </p>
 
 <h3>Use a model which is installed by BROCRE in BRIDE</h3>
 <ol>
