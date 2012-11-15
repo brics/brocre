@@ -20,9 +20,31 @@ global entryWidgetVersion
 global entryWidgetMasterSite
 global checkbuttonValues
 global listbox
+global INSTALL_PATH
+INSTALL_PATH = ""
 
 
 allPackages = []
+
+def checkIfBROCREisBootstraped(window):
+  BROCRE_IS_INSTALLED = False
+  try:
+    brocreconf = open('./brocre.conf','r')
+    for line in  brocreconf:
+      if "ROBOTPKG_BASE=" in line:
+        global INSTALL_PATH
+        INSTALL_PATH = line.replace("ROBOTPKG_BASE=",'')
+          
+    os.environ["ROBOTPKG_BASE"]=INSTALL_PATH
+    if (os.path.isfile(INSTALL_PATH+"/sbin/robotpkg_info")):   
+      BROCRE_IS_INSTALLED = True;
+  except IOError as e:
+    print 'BROCRE is NOT installed'
+    
+    
+  if(not BROCRE_IS_INSTALLED):
+		tkMessageBox.showerror("BROCRE installation", "BROCRE is NOT installed!")
+		exit()
 
 
 def displayText():
@@ -186,8 +208,9 @@ if __name__ == "__main__":
 	entryWidgetMasterSite.insert(0, "http://brics.inf.h-brs.de/")
 	entryWidgetBrocreFolder.insert(0, "hardware")
 	
+	checkIfBROCREisBootstraped(root)
 	
-	allPackages = extractPackageDescriptions()
+	allPackages = extractPackageDescriptions(INSTALL_PATH)
 	
 	allCategories = list()
 	for package in allPackages:
@@ -233,6 +256,4 @@ if __name__ == "__main__":
 	buttonGO = Button(root, text="GO!", command=displayText)
 	buttonGO.grid()
 	
-	
-
 	root.mainloop()
