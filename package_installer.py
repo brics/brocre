@@ -330,6 +330,10 @@ def updateCurrentPackageDescription():
             buttonInstall.config(state=NORMAL)
             buttonDownload.config(state=NORMAL)
             buttonUninstall.config(state=DISABLED)
+        elif currentPackage.installedVersion != currentPackage.version:
+            buttonInstall.config(state=NORMAL)
+            buttonDownload.config(state=NORMAL)
+            buttonUninstall.config(state=NORMAL)
         else:
             buttonUninstall.config(state=NORMAL)
             buttonInstall.config(state=DISABLED)
