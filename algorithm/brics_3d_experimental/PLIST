@@ -16,7 +16,9 @@ algorithm/brics_3d_experimental/brics_3d_ros/manifest.xml
 algorithm/brics_3d_experimental/brics_3d_ros/.project
 algorithm/brics_3d_experimental/brics_3d_ros/src/brics_3d_ros/SceneGraphResentServer.h
 algorithm/brics_3d_experimental/brics_3d_ros/src/brics_3d_ros/SceneGraphResentServer.cpp
+algorithm/brics_3d_experimental/brics_3d_ros/src/brics_3d_ros/SceneGraphROSBroadcaster.h
 algorithm/brics_3d_experimental/brics_3d_ros/src/brics_3d_ros/SceneGraphTypeCasts.cpp
+algorithm/brics_3d_experimental/brics_3d_ros/src/brics_3d_ros/SceneGraphROSBroadcaster.cpp
 algorithm/brics_3d_experimental/brics_3d_ros/src/brics_3d_ros/WorldModelQueryServer.cpp
 algorithm/brics_3d_experimental/brics_3d_ros/src/brics_3d_ros/WorldModelQueryServer.h
 algorithm/brics_3d_experimental/brics_3d_ros/src/brics_3d_ros/SceneGraphTypeCasts.h
@@ -49,6 +51,7 @@ algorithm/brics_3d_experimental/brics_3d_msgs/msg/SceneObject.msg
 algorithm/brics_3d_experimental/brics_3d_msgs/msg/SceneObjects.msg
 algorithm/brics_3d_experimental/brics_3d_msgs/msg/SceneGraphUpdate.msg
 algorithm/brics_3d_experimental/brics_3d_msgs/msg/Coordination.msg
+algorithm/brics_3d_experimental/brics_3d_msgs/msg/Shape.msg
 algorithm/brics_3d_experimental/brics_3d_msgs/srv/GetGroupChildren.srv
 algorithm/brics_3d_experimental/brics_3d_msgs/srv/ResentSceneGraph.srv
 algorithm/brics_3d_experimental/brics_3d_msgs/srv/SetTransform.srv

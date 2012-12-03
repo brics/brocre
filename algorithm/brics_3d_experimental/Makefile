@@ -1,6 +1,6 @@
-# generated on 2012-10-28
+# generated on 2012-12-03
 
-PACKAGE_VERSION = 0.1
+PACKAGE_VERSION = 0.1b
 DISTNAME = brics_3d_experimental-${PACKAGE_VERSION}
 PKGNAME = brics_3d_experimental-${PACKAGE_VERSION}
 CATEGORIES = algorithm
