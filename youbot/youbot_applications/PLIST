@@ -1,5 +1,4 @@
 youbot/youbot_applications/android_app_pc_client/README.txt
-youbot/youbot_applications/android_app_pc_client/external/cmake_modules/FindSoem.cmake
 youbot/youbot_applications/android_app_pc_client/external/cmake_modules/FindOODL_YouBot.cmake
 youbot/youbot_applications/android_app_pc_client/external/cmake_modules/FindBluetooth.cmake
 youbot/youbot_applications/android_app_pc_client/manifest.xml
@@ -9,7 +8,6 @@ youbot/youbot_applications/android_app_pc_client/src/androidCommandEncrypt.hpp
 youbot/youbot_applications/android_app_pc_client/Makefile
 youbot/youbot_applications/android_app_pc_client/CMakeLists.txt
 youbot/youbot_applications/diagnostics_tool/README.txt
-youbot/youbot_applications/diagnostics_tool/external/cmake_modules/FindSoem.cmake
 youbot/youbot_applications/diagnostics_tool/external/cmake_modules/FindOODL_YouBot.cmake
 youbot/youbot_applications/diagnostics_tool/manifest.xml
 youbot/youbot_applications/diagnostics_tool/src/main.cpp
@@ -17,16 +15,19 @@ youbot/youbot_applications/diagnostics_tool/src/YouBotDiagnostics.h
 youbot/youbot_applications/diagnostics_tool/src/YouBotDiagnostics.cpp
 youbot/youbot_applications/diagnostics_tool/Makefile
 youbot/youbot_applications/diagnostics_tool/CMakeLists.txt
-youbot/youbot_applications/joint_configurator/external/cmake_modules/FindSoem.cmake
 youbot/youbot_applications/joint_configurator/external/cmake_modules/FindOODL_YouBot.cmake
 youbot/youbot_applications/joint_configurator/config/arm-4-protected.cfg
 youbot/youbot_applications/joint_configurator/config/arm-3-protected.cfg
 youbot/youbot_applications/joint_configurator/config/arm-5-protected.cfg
+youbot/youbot_applications/joint_configurator/config/arm-2.cfg
 youbot/youbot_applications/joint_configurator/config/arm-1-protected.cfg
+youbot/youbot_applications/joint_configurator/config/arm-4.cfg
+youbot/youbot_applications/joint_configurator/config/arm-1.cfg
+youbot/youbot_applications/joint_configurator/config/arm-5.cfg
 youbot/youbot_applications/joint_configurator/config/base.cfg
 youbot/youbot_applications/joint_configurator/config/base-protected.cfg
 youbot/youbot_applications/joint_configurator/config/arm-2-protected.cfg
-youbot/youbot_applications/joint_configurator/config/arm.cfg
+youbot/youbot_applications/joint_configurator/config/arm-3.cfg
 youbot/youbot_applications/joint_configurator/manifest.xml
 youbot/youbot_applications/joint_configurator/src/JointConfigurator.cpp
 youbot/youbot_applications/joint_configurator/src/BaseConfigurator.cpp
@@ -37,13 +38,11 @@ youbot/youbot_applications/joint_configurator/Makefile
 youbot/youbot_applications/joint_configurator/CMakeLists.txt
 youbot/youbot_applications/stack.xml
 youbot/youbot_applications/hello_world_demo/README.txt
-youbot/youbot_applications/hello_world_demo/external/cmake_modules/FindSoem.cmake
 youbot/youbot_applications/hello_world_demo/external/cmake_modules/FindOODL_YouBot.cmake
 youbot/youbot_applications/hello_world_demo/manifest.xml
 youbot/youbot_applications/hello_world_demo/src/main.cpp
 youbot/youbot_applications/hello_world_demo/Makefile
 youbot/youbot_applications/hello_world_demo/CMakeLists.txt
-youbot/youbot_applications/keyboard_remote_control/external/cmake_modules/FindSoem.cmake
 youbot/youbot_applications/keyboard_remote_control/external/cmake_modules/FindOODL_YouBot.cmake
 youbot/youbot_applications/keyboard_remote_control/config/applications.cfg
 youbot/youbot_applications/keyboard_remote_control/manifest.xml
@@ -51,7 +50,6 @@ youbot/youbot_applications/keyboard_remote_control/src/main.cpp
 youbot/youbot_applications/keyboard_remote_control/Makefile
 youbot/youbot_applications/keyboard_remote_control/CMakeLists.txt
 youbot/youbot_applications/Makefile
-youbot/youbot_applications/joypad_control/external/cmake_modules/FindSoem.cmake
 youbot/youbot_applications/joypad_control/external/cmake_modules/FindOODL_YouBot.cmake
 youbot/youbot_applications/joypad_control/config/youbot-joypad.cfg
 youbot/youbot_applications/joypad_control/manifest.xml

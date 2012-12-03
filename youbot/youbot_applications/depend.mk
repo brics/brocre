@@ -10,7 +10,7 @@ PREFER.youbot_applications?=    robotpkg
 
 DEPEND_USE+=        youbot_applications
 
-DEPEND_ABI.youbot_applications?=    youbot_applications>=0.1
+DEPEND_ABI.youbot_applications?=    youbot_applications>=0.2
 DEPEND_DIR.youbot_applications?=    ../../youbot/youbot_applications
 
 SYSTEM_SEARCH.youbot_applications=youbot/youbot_applications/stack.xml

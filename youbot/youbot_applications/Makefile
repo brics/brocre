@@ -1,6 +1,6 @@
-# generated on 2012-02-10
+# generated on 2012-12-03
 
-PACKAGE_VERSION = 0.1
+PACKAGE_VERSION = 0.2
 DISTNAME = youbot_applications-${PACKAGE_VERSION}
 PKGNAME = youbot_applications-${PACKAGE_VERSION}
 CATEGORIES = youbot
