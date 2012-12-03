@@ -1,6 +1,6 @@
-# generated on 2012-08-03
+# generated on 2012-12-03
 
-PACKAGE_VERSION = 0.95
+PACKAGE_VERSION = 0.95b
 DISTNAME = youbot_driver-${PACKAGE_VERSION}
 PKGNAME = youbot_driver-${PACKAGE_VERSION}
 CATEGORIES = hardware youbot

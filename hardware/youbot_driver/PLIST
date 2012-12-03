@@ -75,6 +75,7 @@ hardware/youbot_driver/youbot/YouBotJointParameterPasswordProtected.cpp
 hardware/youbot_driver/youbot/YouBotBase.cpp
 hardware/youbot_driver/youbot/CMakeLists.txt
 hardware/youbot_driver/config/youbot-ethercat.cfg
+hardware/youbot_driver/config/youbot-manipulator2.cfg
 hardware/youbot_driver/config/youbot-base.cfg
 hardware/youbot_driver/config/youbot-manipulator.cfg
 hardware/youbot_driver/manifest.xml
@@ -159,6 +160,7 @@ hardware/youbot_driver/youbot-uml-models/293233.bodies
 hardware/youbot_driver/youbot-uml-models/294385.bodies
 hardware/youbot_driver/youbot-uml-models/252017.bodies
 hardware/youbot_driver/youbot-uml-models/279537.bodies
+hardware/youbot_driver/youbot-uml-models/545265.bodies
 hardware/youbot_driver/youbot-uml-models/169841.bodies
 hardware/youbot_driver/youbot-uml-models/445681.bodies
 hardware/youbot_driver/youbot-uml-models/297201.bodies
@@ -198,6 +200,7 @@ hardware/youbot_driver/youbot-uml-models/398961.bodies
 hardware/youbot_driver/youbot-uml-models/295025.bodies
 hardware/youbot_driver/youbot-uml-models/318705.bodies
 hardware/youbot_driver/youbot-uml-models/180849
+hardware/youbot_driver/youbot-uml-models/552433.bodies
 hardware/youbot_driver/youbot-uml-models/412657.bodies
 hardware/youbot_driver/youbot-uml-models/425713.bodies
 hardware/youbot_driver/youbot-uml-models/499057.bodies
@@ -219,6 +222,7 @@ hardware/youbot_driver/youbot-uml-models/141681.bodies
 hardware/youbot_driver/youbot-uml-models/259057.bodies
 hardware/youbot_driver/youbot-uml-models/311025.bodies
 hardware/youbot_driver/youbot-uml-models/399217.bodies
+hardware/youbot_driver/youbot-uml-models/545521.bodies
 hardware/youbot_driver/youbot-uml-models/128124.bodies
 hardware/youbot_driver/youbot-uml-models/399601.bodies
 hardware/youbot_driver/youbot-uml-models/397809.bodies
@@ -267,9 +271,11 @@ hardware/youbot_driver/youbot-uml-models/161265.diagram
 hardware/youbot_driver/youbot-uml-models/319857.bodies
 hardware/youbot_driver/youbot-uml-models/361201.bodies
 hardware/youbot_driver/youbot-uml-models/134897.diagram
+hardware/youbot_driver/youbot-uml-models/545649.bodies
 hardware/youbot_driver/youbot-uml-models/279665.bodies
 hardware/youbot_driver/youbot-uml-models/472561.bodies
 hardware/youbot_driver/youbot-uml-models/361329.bodies
+hardware/youbot_driver/youbot-uml-models/545393.bodies
 hardware/youbot_driver/youbot-uml-models/294257.bodies
 hardware/youbot_driver/youbot-uml-models/128252.bodies
 hardware/youbot_driver/youbot-uml-models/458737.bodies
@@ -288,6 +294,7 @@ hardware/youbot_driver/youbot-uml-models/317809.bodies
 hardware/youbot_driver/youbot-uml-models/361841.bodies
 hardware/youbot_driver/youbot-uml-models/361585.bodies
 hardware/youbot_driver/youbot-uml-models/318321.bodies
+hardware/youbot_driver/youbot-uml-models/545777.bodies
 hardware/youbot_driver/youbot-uml-models/406129.bodies
 hardware/youbot_driver/youbot-uml-models/166402.bodies
 hardware/youbot_driver/youbot-uml-models/395761.bodies
