@@ -202,11 +202,11 @@ if __name__ == "__main__":
 	entryWidgetSourcePath = Entry(root, width=40)
 	entryWidgetSourcePath.grid(row=12, column=1, sticky=W)
 	
-	entryWidgetPackageName.insert(0, "youbot_driver")
-	entryWidgetCategorie.insert(0, "hardware youbot")
-	entryWidgetVersion.insert(0, "0.9")
+	#entryWidgetPackageName.insert(0, "youbot_driver")
+	#entryWidgetCategorie.insert(0, "hardware youbot")
+	#entryWidgetVersion.insert(0, "0.9")
 	entryWidgetMasterSite.insert(0, "http://brics.inf.h-brs.de/")
-	entryWidgetBrocreFolder.insert(0, "hardware")
+	#entryWidgetBrocreFolder.insert(0, "hardware")
 	
 	checkIfBROCREisBootstraped(root)
 	

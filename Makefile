@@ -48,7 +48,7 @@
 #
 
 SUBDIR+=	algorithm
-#SUBDIR+=	archivers
+SUBDIR+=	ide
 SUBDIR+=	hardware
 SUBDIR+=	interfaces
 #SUBDIR+=	net

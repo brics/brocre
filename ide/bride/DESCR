@@ -1,0 +1,1 @@
+Contains an Eclipse based model driven engineering editor for ROS to create ROS packages and systems. Based on the graphical specified models the code for the node, configuration and launch files will be auto-generated.
