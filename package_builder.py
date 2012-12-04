@@ -253,7 +253,7 @@ if __name__ == "__main__":
 	#buttonOpenFile = Button(root, text="...", command=openFile, height =1)
 	#buttonOpenFile.grid(row=0,column=3, sticky=W )
 
-	buttonGO = Button(root, text="GO!", command=displayText)
+	buttonGO = Button(root, text="Request Upload!", command=displayText)
 	buttonGO.grid()
 	
 	root.mainloop()

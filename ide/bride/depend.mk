@@ -10,7 +10,7 @@ PREFER.bride?=    robotpkg
 
 DEPEND_USE+=        bride
 
-DEPEND_ABI.bride?=    bride>=0.1.1
+DEPEND_ABI.bride?=    bride>=0.1.2
 DEPEND_DIR.bride?=    ../../ide/bride
 
 SYSTEM_SEARCH.bride=ide/bride/stack.xml
