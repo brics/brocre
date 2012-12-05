@@ -3,7 +3,7 @@
 
 COMMENT=	models
 
-#SUBDIR+=	bride-rtt-component-models
+SUBDIR+=	brics_3d_bride_models
 
 
 include ../mk/robotpkg.subdir.mk
