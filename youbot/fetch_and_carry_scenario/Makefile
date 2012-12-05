@@ -20,6 +20,7 @@ do-install:
 	${RUN} tar -C $(ROBOTPKG_BASE) -xvf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}
 
 include ../../interfaces/brics-interfaces/depend.mk
+include ../../models/brics_3d_bride_models/depend.mk
 include ../../algorithm/brics_3d/depend.mk
 include ../../algorithm/brics_3d_experimental/depend.mk
 include ../../algorithm/hbrs-ros-pkg/depend.mk
