@@ -1,6 +1,6 @@
-# generated on 2012-12-03
+# generated on 2012-12-05
 
-PACKAGE_VERSION = 0.1b
+PACKAGE_VERSION = 0.1.1
 DISTNAME = brics_3d_experimental-${PACKAGE_VERSION}
 PKGNAME = brics_3d_experimental-${PACKAGE_VERSION}
 CATEGORIES = algorithm
@@ -8,8 +8,8 @@ MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Sebastian Blumenthal
-HOMEPAGE = http://ros.org/wiki/brics_3d_experimental
-COMMENT = brics_3d_experimental
+HOMEPAGE = https://github.com/blumenthal/brics_3d_experimental
+COMMENT = BRICS_3D helper tools for the ROS framework
 LICENSE = modified-bsd
 
 NO_CONFIGURE = yes
