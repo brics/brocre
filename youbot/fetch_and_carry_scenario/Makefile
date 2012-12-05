@@ -1,6 +1,6 @@
 # generated on 2012-12-05
 
-PACKAGE_VERSION = 0.1
+PACKAGE_VERSION = 0.1.1
 DISTNAME = fetch_and_carry_scenario-${PACKAGE_VERSION}
 PKGNAME = fetch_and_carry_scenario-${PACKAGE_VERSION}
 CATEGORIES = youbot
@@ -20,8 +20,8 @@ do-install:
 	${RUN} tar -C $(ROBOTPKG_BASE) -xvf ${DISTDIR}/${DISTNAME}${EXTRACT_SUFX}
 
 include ../../interfaces/brics-interfaces/depend.mk
-include ../../models/brics_3d_bride_models/depend.mk
 include ../../algorithm/brics_3d/depend.mk
+include ../../models/brics_3d_bride_models/depend.mk
 include ../../algorithm/brics_3d_experimental/depend.mk
 include ../../algorithm/hbrs-ros-pkg/depend.mk
 include ../../youbot/youbot-manipulation/depend.mk
