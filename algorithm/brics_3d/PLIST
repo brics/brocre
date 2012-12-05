@@ -455,6 +455,7 @@ algorithm/brics_3d/examples/test_data/depth_images/pringlesGreenMedian_0_colored
 algorithm/brics_3d/examples/test_data/depth_images/pringlesGreenMedian_1_coloredPC_xyz_32F3.xml
 algorithm/brics_3d/examples/rigidTransformation_benchmark.cpp
 algorithm/brics_3d/examples/demoSegmentationPlane.cpp
+algorithm/brics_3d/examples/wm_iterator_test.cpp
 algorithm/brics_3d/examples/icp_benchmark.cpp
 algorithm/brics_3d/examples/CMakeLists.txt
 algorithm/brics_3d/examples/icp_test.cpp
@@ -513,6 +514,7 @@ algorithm/brics_3d/src/brics_3d/util/ConfigurationFileHandler.h
 algorithm/brics_3d/src/brics_3d/util/IpaDatasetLoader.cpp
 algorithm/brics_3d/src/brics_3d/util/PCLTypecaster.cpp
 algorithm/brics_3d/src/brics_3d/util/Benchmark.cpp
+algorithm/brics_3d/src/brics_3d/util/PCLPointCloudIterator.h
 algorithm/brics_3d/src/brics_3d/util/Timer.h
 algorithm/brics_3d/src/brics_3d/util/Benchmark.h
 algorithm/brics_3d/src/brics_3d/util/OSGPointCloudVisualizer.cpp
@@ -554,6 +556,7 @@ algorithm/brics_3d/src/brics_3d/worldModel/sceneGraph/Shape.cpp
 algorithm/brics_3d/src/brics_3d/worldModel/sceneGraph/Node.cpp
 algorithm/brics_3d/src/brics_3d/worldModel/sceneGraph/OutdatedDataIdAwareDeleter.h
 algorithm/brics_3d/src/brics_3d/worldModel/sceneGraph/SubGraphChecker.h
+algorithm/brics_3d/src/brics_3d/worldModel/sceneGraph/PointCloudPCLBinding.h
 algorithm/brics_3d/src/brics_3d/worldModel/sceneGraph/AttributeFinder.h
 algorithm/brics_3d/src/brics_3d/worldModel/sceneGraph/Attribute.h
 algorithm/brics_3d/src/brics_3d/worldModel/sceneGraph/ISceneGraphUpdate.h

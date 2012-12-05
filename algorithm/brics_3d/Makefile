@@ -1,13 +1,13 @@
-# generated on 2012-10-17
+# generated on 2012-12-05
 
-PACKAGE_VERSION = 0.3.0
+PACKAGE_VERSION = 0.3.1
 DISTNAME = brics_3d-${PACKAGE_VERSION}
 PKGNAME = brics_3d-${PACKAGE_VERSION}
 CATEGORIES = algorithm perception
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
-MAINTAINER = Sebastian Blumenthal / blumenthal@gps-stuttgart.de
+MAINTAINER = Sebastian Blumenthal/blumenthal@gps-stuttgart.de
 HOMEPAGE = https://trac.best-of-robotics.org/brics/wiki/BRICS_3D/Mainpage
 COMMENT = brics_3d
 LICENSE = gnu-lgpl-v2.1 modified-bsd
