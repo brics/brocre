@@ -1,6 +1,6 @@
-# generated on 2012-12-05
+# generated on 2013-02-18
 
-PACKAGE_VERSION = 0.1.1
+PACKAGE_VERSION = 0.1.2
 DISTNAME = brics_3d_bride_models-${PACKAGE_VERSION}
 PKGNAME = brics_3d_bride_models-${PACKAGE_VERSION}
 CATEGORIES = bride_models perception
