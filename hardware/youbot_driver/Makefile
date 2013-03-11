@@ -1,15 +1,15 @@
-# generated on 2012-12-03
+# generated on 2013-03-11
 
-PACKAGE_VERSION = 0.95b
+PACKAGE_VERSION = 0.96
 DISTNAME = youbot_driver-${PACKAGE_VERSION}
 PKGNAME = youbot_driver-${PACKAGE_VERSION}
-CATEGORIES = hardware youbot
+CATEGORIES = hardware, youbot
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Jan Paulus/jan.paulus@h-brs.de
 HOMEPAGE = https://github.com/youbot/youbot_driver
-COMMENT = youBot driver
+COMMENT = Drivers for the KUKA youBot robot
 LICENSE = gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE = yes

@@ -10,7 +10,7 @@ PREFER.youbot_driver?=    robotpkg
 
 DEPEND_USE+=        youbot_driver
 
-DEPEND_ABI.youbot_driver?=    youbot_driver>=0.95b
+DEPEND_ABI.youbot_driver?=    youbot_driver>=0.96
 DEPEND_DIR.youbot_driver?=    ../../hardware/youbot_driver
 
 SYSTEM_SEARCH.youbot_driver=hardware/youbot_driver/manifest.xml
