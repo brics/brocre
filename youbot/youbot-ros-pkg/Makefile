@@ -1,6 +1,6 @@
-# generated on 2012-12-03
+# generated on 2013-03-11
 
-PACKAGE_VERSION = 0.2b
+PACKAGE_VERSION = 0.2c
 DISTNAME = youbot-ros-pkg-${PACKAGE_VERSION}
 PKGNAME = youbot-ros-pkg-${PACKAGE_VERSION}
 CATEGORIES = youbot
@@ -9,7 +9,7 @@ MASTER_REPOSITORY =
 
 MAINTAINER = Sebastian Blumenthal, Walter Nowak
 HOMEPAGE = https://github.com/youbot/youbot-ros-pkg
-COMMENT = ROS stacks for the KUKA youBot
+COMMENT = ROS Stacks for the KUKA youBot
 LICENSE = gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE = yes
