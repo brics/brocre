@@ -1,6 +1,6 @@
-# generated on 2012-12-05
+# generated on 2013-03-11
 
-PACKAGE_VERSION = 0.1.1
+PACKAGE_VERSION = 0.1.2
 DISTNAME = fetch_and_carry_scenario-${PACKAGE_VERSION}
 PKGNAME = fetch_and_carry_scenario-${PACKAGE_VERSION}
 CATEGORIES = youbot
@@ -8,8 +8,8 @@ MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Frederik Hegger, Jan Paulus
-HOMEPAGE = http://b-it-bots.de/
-COMMENT = Fetch&Carry scenario for the Bonn-Rhein-Sieg University
+HOMEPAGE = http://www.b-it-bots.de
+COMMENT = Fetch&Carry scenario of the Bonn-Rhein-Sieg University
 LICENSE = gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE = yes
