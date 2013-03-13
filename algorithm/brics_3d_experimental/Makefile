@@ -7,7 +7,7 @@ CATEGORIES = algorithm
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
-MAINTAINER = Maintained by sblume
+MAINTAINER = Maintained by Sebastian Blumenthal
 HOMEPAGE = http://ros.org/wiki/brics_3d_experimental
 COMMENT = brics_3d_experimental
 LICENSE = modified-bsd

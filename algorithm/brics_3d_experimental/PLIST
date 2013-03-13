@@ -72,7 +72,6 @@ algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_GetTransfor
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_AddGeometricNode.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/__init__.pyc
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_GetSceneObjects.py
-algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_ResentSceneGraph.pyc
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_AddTransformNode.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_GetGroupChildren.pyc
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_GetNodeParents.py
@@ -82,21 +81,14 @@ algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_GetNodes.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_DeleteNode.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/__init__.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_GetTransformForNode.pyc
-algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/srv/_ResentSceneGraph.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_SceneObjects.pyc
-algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_PointCloudSegments.pyc
-algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_PointCloudSegments.py
-algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_SceneGraphUpdate.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_SceneObject.pyc
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_Attribute.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_Coordination.pyc
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/__init__.pyc
-algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_Shape.pyc
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_SceneObject.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_Attribute.pyc
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_Coordination.py
-algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_SceneGraphUpdate.pyc
-algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_Shape.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/_SceneObjects.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/msg/__init__.py
 algorithm/brics_3d_experimental/brics_3d_msgs/src/brics_3d_msgs/__init__.pyc
@@ -126,7 +118,6 @@ algorithm/brics_3d_experimental/brics_3d_msgs/msg/Attribute.msg
 algorithm/brics_3d_experimental/brics_3d_msgs/msg/SceneGraphUpdate.msg
 algorithm/brics_3d_experimental/brics_3d_msgs/msg/SceneObject.msg
 algorithm/brics_3d_experimental/brics_3d_msgs/msg/Coordination.msg
-algorithm/brics_3d_experimental/brics_3d_msgs/msg/PointCloudSegments.msg
 algorithm/brics_3d_experimental/brics_3d_msgs/Makefile
 algorithm/brics_3d_experimental/Makefile
 algorithm/brics_3d_experimental/README.md
