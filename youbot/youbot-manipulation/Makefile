@@ -1,4 +1,4 @@
-# generated on 2013-03-11
+# generated on 2013-03-13
 
 PACKAGE_VERSION = 0.2.1
 DISTNAME = youbot-manipulation-${PACKAGE_VERSION}
@@ -8,9 +8,9 @@ MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Maintained by Sven Schneider
-HOMEPAGE = https://github.com/svenschneider/youbot-manipulation
+HOMEPAGE = http://ros.org/wiki/youbot-manipulation
 COMMENT = youbot-manipulation
-LICENSE = gnu-lgpl-v2.1 modified-bsd
+LICENSE = GPL,BSD
 
 NO_CONFIGURE = yes
 NO_BUILD = yes

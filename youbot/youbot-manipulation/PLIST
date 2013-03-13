@@ -56,7 +56,6 @@ youbot/youbot-manipulation/youbot_arm_kinematics/ros/src/youbot_arm_kinematics_p
 youbot/youbot-manipulation/youbot_arm_kinematics/ros/src/inverse_kinematics_solver.cpp
 youbot/youbot-manipulation/youbot_arm_kinematics/ros/src/solver_info_processor.cpp
 youbot/youbot-manipulation/youbot_arm_kinematics/Makefile
-youbot/youbot-manipulation/youbot_arm_kinematics/lib/libyoubot_arm_kinematics.so
 youbot/youbot-manipulation/Makefile
 youbot/youbot-manipulation/youbot_arm_navigation/CMakeLists.txt
 youbot/youbot-manipulation/youbot_arm_navigation/mainpage.dox
