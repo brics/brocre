@@ -10,7 +10,7 @@ MASTER_REPOSITORY =
 MAINTAINER = Maintained by Sven Schneider
 HOMEPAGE = http://ros.org/wiki/youbot-manipulation
 COMMENT = youbot-manipulation
-LICENSE = GPL,BSD
+LICENSE = gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE = yes
 NO_BUILD = yes
