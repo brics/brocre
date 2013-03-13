@@ -100,7 +100,6 @@ youbot/youbot-ros-pkg/youbot_common/youbot_trajectory_action_server/mainpage.dox
 youbot/youbot-ros-pkg/youbot_common/youbot_trajectory_action_server/src/joint_trajectory_action.cpp
 youbot/youbot-ros-pkg/youbot_common/youbot_trajectory_action_server/manifest.xml
 youbot/youbot-ros-pkg/youbot_common/youbot_trajectory_action_server/Makefile
-youbot/youbot-ros-pkg/youbot_common/youbot_trajectory_action_server/lib/libyoubot_trajectory_action_server.so
 youbot/youbot-ros-pkg/youbot_common/youbot_description/CMakeLists.txt
 youbot/youbot-ros-pkg/youbot_common/youbot_description/include/joint_position_control.h
 youbot/youbot-ros-pkg/youbot_common/youbot_description/include/joint_state_observer_gazebo.h
@@ -256,8 +255,6 @@ youbot/youbot-ros-pkg/youbot_common/youbot_description/urdf/youbot_gripper/gripp
 youbot/youbot-ros-pkg/youbot_common/youbot_description/urdf/youbot_gripper/gripper.gazebo.xacro
 youbot/youbot-ros-pkg/youbot_common/youbot_description/Makefile
 youbot/youbot-ros-pkg/youbot_common/youbot_description/gazebo/gazebo.urdf.xacro
-youbot/youbot-ros-pkg/youbot_common/youbot_description/lib/libjoint_position_control.so
-youbot/youbot-ros-pkg/youbot_common/youbot_description/lib/libyoubot_universal_control.so
 youbot/youbot-ros-pkg/youbot_common/Makefile
 youbot/youbot-ros-pkg/youbot_perception/CMakeLists.txt
 youbot/youbot-ros-pkg/youbot_perception/stack.xml
@@ -320,10 +317,6 @@ youbot/youbot-ros-pkg/youbot_perception/tower_of_hanoi_sdk/data/goal.gif
 youbot/youbot-ros-pkg/youbot_perception/tower_of_hanoi_sdk/data/auxillary.gif
 youbot/youbot-ros-pkg/youbot_perception/tower_of_hanoi_sdk/yellowRoiConfig.cfg
 youbot/youbot-ros-pkg/youbot_perception/tower_of_hanoi_sdk/Makefile
-youbot/youbot-ros-pkg/youbot_perception/tower_of_hanoi_sdk/lib/IterativeClosestPoint.h
-youbot/youbot-ros-pkg/youbot_perception/tower_of_hanoi_sdk/lib/EuclideanClustering.h
-youbot/youbot-ros-pkg/youbot_perception/tower_of_hanoi_sdk/lib/EuclideanClustering.cpp
-youbot/youbot-ros-pkg/youbot_perception/tower_of_hanoi_sdk/lib/IterativeClosestPoint.cpp
 youbot/youbot-ros-pkg/repository.debs
 youbot/youbot-ros-pkg/youbot_diagnostics/CMakeLists.txt
 youbot/youbot-ros-pkg/youbot_diagnostics/stack.xml

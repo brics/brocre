@@ -1,4 +1,4 @@
-# generated on 2013-03-11
+# generated on 2013-03-13
 
 PACKAGE_VERSION = 0.2c
 DISTNAME = youbot-ros-pkg-${PACKAGE_VERSION}
