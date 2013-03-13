@@ -10,7 +10,7 @@ PREFER.brics_3d_experimental?=    robotpkg
 
 DEPEND_USE+=        brics_3d_experimental
 
-DEPEND_ABI.brics_3d_experimental?=    brics_3d_experimental>=0.1.1
+DEPEND_ABI.brics_3d_experimental?=    brics_3d_experimental>=0.1.2
 DEPEND_DIR.brics_3d_experimental?=    ../../algorithm/brics_3d_experimental
 
 SYSTEM_SEARCH.brics_3d_experimental=algorithm/brics_3d_experimental/stack.xml
