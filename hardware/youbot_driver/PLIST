@@ -401,9 +401,6 @@ hardware/youbot_driver/soem/ChangeLog
 hardware/youbot_driver/Makefile
 hardware/youbot_driver/Doxyfile.in
 hardware/youbot_driver/README.md
-hardware/youbot_driver/lib/libYouBotDriver.so
-hardware/youbot_driver/lib/libsoem.a
-hardware/youbot_driver/lib/libYouBotDriver.a
 hardware/youbot_driver/cmake-modules/FindSoem.cmake
 hardware/youbot_driver/cmake-modules/UseDoxygen.cmake
 hardware/youbot_driver/cmake-modules/FindBoostLog.cmake
