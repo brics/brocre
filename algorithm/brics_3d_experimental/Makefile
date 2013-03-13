@@ -7,9 +7,9 @@ CATEGORIES = algorithm
 MASTER_SITES = http://brics.inf.h-brs.de/
 MASTER_REPOSITORY = 
 
-MAINTAINER = Sebastian Blumenthal
-HOMEPAGE = https://github.com/blumenthal/brics_3d_experimental
-COMMENT = BRICS_3D helper tools for the ROS framework
+MAINTAINER = Maintained by sblume
+HOMEPAGE = http://ros.org/wiki/brics_3d_experimental
+COMMENT = brics_3d_experimental
 LICENSE = modified-bsd
 
 NO_CONFIGURE = yes
