@@ -10,7 +10,7 @@ MASTER_REPOSITORY =
 MAINTAINER = Markus Klotzbuecher, markus.klotzbuecher@mech.kuleuven.be
 HOMEPAGE = http://people.mech.kuleuven.be/~mklotzbucher/rfsm/README.html
 COMMENT = rFSM reduced Statecharts
-LICENSE = Dual LGPL/BSD
+LICENSE = gnu-lgpl-v2.1 modified-bsd
 
 NO_CONFIGURE = yes
 NO_BUILD = yes
