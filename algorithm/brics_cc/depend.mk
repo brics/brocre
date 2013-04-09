@@ -11,9 +11,9 @@ PREFER.brics_cc?=    robotpkg
 DEPEND_USE+=        brics_cc
 
 DEPEND_ABI.brics_cc?=    brics_cc>=1.0
-DEPEND_DIR.brics_cc?=    ../../coordination/brics_cc
+DEPEND_DIR.brics_cc?=    ../../algorithm/brics_cc
 
-SYSTEM_SEARCH.brics_cc=coordination//home/fred/brics_xx/brics_cc
+SYSTEM_SEARCH.brics_cc=algorithm/brics_cc/manifest.xml
 endif
 
 DEPEND_DEPTH:=        ${DEPEND_DEPTH:+=}
