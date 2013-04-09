@@ -1,1 +1,1 @@
-youbot-manipulation
+ROS manipulation packages for the KUKA youBot which provide functionallity e.g. a inverse kinematics solver or setups for planned arm navigation.
