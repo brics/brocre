@@ -4,7 +4,7 @@ PACKAGE_VERSION = 1.0
 DISTNAME = brics_cc-${PACKAGE_VERSION}
 PKGNAME = brics_cc-${PACKAGE_VERSION}
 CATEGORIES = algorithm
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Markus Klotzbuecher, markus.klotzbuecher@mech.kuleuven.be

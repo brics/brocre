@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.1.2
 DISTNAME = fetch_and_carry_scenario-${PACKAGE_VERSION}
 PKGNAME = fetch_and_carry_scenario-${PACKAGE_VERSION}
 CATEGORIES = youbot
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Frederik Hegger, Jan Paulus

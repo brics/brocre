@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.2.1
 DISTNAME = youbot-manipulation-${PACKAGE_VERSION}
 PKGNAME = youbot-manipulation-${PACKAGE_VERSION}
 CATEGORIES = youbot
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Maintained by Sven Schneider

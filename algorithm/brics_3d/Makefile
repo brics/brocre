@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.3.2
 DISTNAME = brics_3d-${PACKAGE_VERSION}
 PKGNAME = brics_3d-${PACKAGE_VERSION}
 CATEGORIES = algorithm perception
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Sebastian Blumenthal/blumenthal@gps-stuttgart.de

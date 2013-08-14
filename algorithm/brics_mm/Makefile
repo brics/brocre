@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.1
 DISTNAME = brics_mm-${PACKAGE_VERSION}
 PKGNAME = brics_mm-${PACKAGE_VERSION}
 CATEGORIES = algorithm
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Walter Nowak

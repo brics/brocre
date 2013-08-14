@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.1
 DISTNAME = bcm_roi_filter-${PACKAGE_VERSION}
 PKGNAME = bcm_roi_filter-${PACKAGE_VERSION}
 CATEGORIES = bride_models
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Alexander Bubeck

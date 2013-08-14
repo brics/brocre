@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.2
 DISTNAME = youbot_applications-${PACKAGE_VERSION}
 PKGNAME = youbot_applications-${PACKAGE_VERSION}
 CATEGORIES = youbot
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Maintained by Sebastian Blumenthal

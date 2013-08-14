@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.1.2
 DISTNAME = brics_3d_experimental-${PACKAGE_VERSION}
 PKGNAME = brics_3d_experimental-${PACKAGE_VERSION}
 CATEGORIES = algorithm
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Maintained by Sebastian Blumenthal

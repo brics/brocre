@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.1
 DISTNAME = brics-oodl-${PACKAGE_VERSION}
 PKGNAME = brics-oodl-${PACKAGE_VERSION}
 CATEGORIES = hardware
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = BRSU

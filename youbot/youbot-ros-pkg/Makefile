@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.2c
 DISTNAME = youbot-ros-pkg-${PACKAGE_VERSION}
 PKGNAME = youbot-ros-pkg-${PACKAGE_VERSION}
 CATEGORIES = youbot
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Sebastian Blumenthal, Walter Nowak

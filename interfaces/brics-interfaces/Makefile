@@ -5,7 +5,7 @@ PACKAGE_VERSION=	0.1
 DISTNAME=		brics-interfaces-${PACKAGE_VERSION}
 PKGNAME=		brics-interfaces-${PACKAGE_VERSION}
 CATEGORIES=		interfaces
-MASTER_SITES=		http://brics.inf.h-brs.de/
+MASTER_SITES=		http://brics.inf.h-brs.de/brocre/
 #MASTER_REPOSITORY= 	git git://github.com/b-it-bots/youbot-stack.git
 
 MAINTAINER=		Alexander Bubeck

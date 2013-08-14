@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.1.2
 DISTNAME = bride-${PACKAGE_VERSION}
 PKGNAME = bride-${PACKAGE_VERSION}
 CATEGORIES = IDE
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Maintained by Alexander Bubeck

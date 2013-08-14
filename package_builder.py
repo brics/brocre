@@ -205,7 +205,7 @@ if __name__ == "__main__":
 	#entryWidgetPackageName.insert(0, "youbot_driver")
 	#entryWidgetCategorie.insert(0, "hardware youbot")
 	#entryWidgetVersion.insert(0, "0.9")
-	entryWidgetMasterSite.insert(0, "http://brics.inf.h-brs.de/")
+	entryWidgetMasterSite.insert(0, "http://brics.inf.h-brs.de/brocre/")
 	#entryWidgetBrocreFolder.insert(0, "hardware")
 	
 	checkIfBROCREisBootstraped(root)

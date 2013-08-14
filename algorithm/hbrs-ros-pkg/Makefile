@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.2
 DISTNAME = hbrs-ros-pkg-${PACKAGE_VERSION}
 PKGNAME = hbrs-ros-pkg-${PACKAGE_VERSION}
 CATEGORIES = algorithm
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Frederik Hegger

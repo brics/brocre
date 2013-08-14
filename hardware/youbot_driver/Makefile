@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.96
 DISTNAME = youbot_driver-${PACKAGE_VERSION}
 PKGNAME = youbot_driver-${PACKAGE_VERSION}
 CATEGORIES = hardware youbot
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Jan Paulus/jan.paulus@h-brs.de

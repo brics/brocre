@@ -4,7 +4,7 @@ PACKAGE_VERSION = 0.1.3
 DISTNAME = brics_3d_bride_models-${PACKAGE_VERSION}
 PKGNAME = brics_3d_bride_models-${PACKAGE_VERSION}
 CATEGORIES = bride_models perception
-MASTER_SITES = http://brics.inf.h-brs.de/
+MASTER_SITES = http://brics.inf.h-brs.de/brocre/
 MASTER_REPOSITORY = 
 
 MAINTAINER = Sebastian Blumenthal/blumenthal@gps-stuttgart.de
